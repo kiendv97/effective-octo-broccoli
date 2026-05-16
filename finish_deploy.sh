@@ -4,7 +4,7 @@ DOMAIN=$1
 APP_DIR="/var/www/app"
 
 if [ -z "$DOMAIN" ]; then
-    echo "Usage: ./finish_deploy.sh yourdomain.com"
+    echo "Usage: ./finish_deploy.sh aisupporst.shop"
     exit 1
 fi
 
