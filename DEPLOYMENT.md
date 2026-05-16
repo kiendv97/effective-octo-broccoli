@@ -74,6 +74,22 @@ chmod +x finish_deploy.sh
 
 ---
 
+## ⚡ Đổi Nhanh Domain/Token (Khi Domain die)
+
+Nếu bạn cần đổi nhanh sang Domain mới hoặc đổi Token Telegram mà không muốn cài lại từ đầu:
+
+1. Trỏ DNS của Domain mới về IP VPS.
+2. Chạy lệnh sau trên VPS:
+```bash
+cd /var/www/app
+chmod +x update_config.sh
+./update_config.sh newdomain.com token1 chat1 token2 chat2
+```
+
+Script này sẽ tự động cập nhật `.env`, cấu hình lại Nginx, cài SSL mới và restart app.
+
+---
+
 ## 🔄 Quy trình Cập nhật Code (Update)
 
 Khi bạn có thay đổi code ở máy local và muốn cập nhật lên server:
