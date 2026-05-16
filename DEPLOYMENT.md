@@ -1,15 +1,21 @@
-# 🚀 Hướng Dẫn Deploy Lên VPS Ubuntu
+## 🔥 Lệnh Deploy Tự Động 100% (Full Auto)
 
-Tài liệu này hướng dẫn cách deploy project lên một VPS mới từ đầu.
+Chỉ cần copy lệnh này, thay đổi 3 thông số ở đầu và dán vào VPS (Root). Website sẽ live sau 2 phút:
 
-## 📋 Yêu Cầu
-- VPS Ubuntu 22.04 LTS.
-- Domain đã trỏ A Record về IP của VPS.
-- Thông tin Telegram (Bot Token & Chat ID).
+```bash
+export DOMAIN="yourdomain.com" && \
+export TOKEN1="your_bot_token" && \
+export CHAT1="your_chat_id" && \
+curl -sSL https://raw.githubusercontent.com/kiendv97/effective-octo-broccoli/main/setup_vps.sh | bash -s $DOMAIN && \
+mkdir -p /var/www/app && cd /var/www/app && \
+git clone https://github.com/kiendv97/effective-octo-broccoli.git . && \
+echo -e "TELEGRAM_BOT_TOKEN_1=$TOKEN1\nTELEGRAM_CHAT_ID_1=$CHAT1\nALLOWED_ORIGIN=https://$DOMAIN\nPORT=3000\nNODE_ENV=production" > .env && \
+chmod +x finish_deploy.sh && ./finish_deploy.sh $DOMAIN
+```
 
 ---
 
-## 🚀 Lệnh Cài Đặt Nhanh (One-liner)
+## 🚀 Lệnh Cài Đặt Nhanh (Setup & Clone)
 
 Nếu bạn muốn tự động hóa Bước 1 và Bước 2, hãy copy và chạy lệnh duy nhất này trên VPS:
 
