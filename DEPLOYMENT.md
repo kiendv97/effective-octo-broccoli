@@ -64,11 +64,36 @@ chmod +x finish_deploy.sh
 
 ---
 
+## 🔄 Quy trình Cập nhật Code (Update)
+
+Khi bạn có thay đổi code ở máy local và muốn cập nhật lên server:
+
+### 1. Tại máy Local:
+```powershell
+git add .
+git commit -m "Ghi chú thay đổi"
+git push origin main
+```
+
+### 2. Tại Server (VPS):
+```bash
+cd /var/www/app
+git pull origin main
+
+# Nếu có cài thêm thư viện mới:
+npm install --production
+
+# Restart ứng dụng:
+pm2 restart frontend-app
+```
+
+---
+
 ## 📝 Quản lý ứng dụng
 - **Xem trạng thái**: `pm2 status`
 - **Xem logs**: `pm2 logs`
-- **Khởi động lại**: `pm2 restart all`
-- **Cấu hình Nginx**: `/etc/nginx/sites-available/YOUR_DOMAIN.com`
+- **Khởi động lại**: `pm2 restart frontend-app`
+- **Dừng app**: `pm2 stop frontend-app`
 
 ---
 
