@@ -19,7 +19,7 @@ nano setup_vps.sh
 # (Copy nội dung file setup_vps.sh từ repo này dán vào)
 
 chmod +x setup_vps.sh
-./setup_vps.sh YOUR_DOMAIN.com
+./setup_vps.sh yourdomain.com
 ```
 
 ---
@@ -36,7 +36,7 @@ git clone YOUR_GIT_REPO_URL .
 
 ## 📋 Bước 3: Cấu hình Environment (.env)
 
-Tạo file `.env` thủ công trên VPS vì file này không được đưa lên Git:
+Tạo file `.env` thủ công trên VPS vì file này không được đưa lên Git. Sử dụng file `.env.example` để làm mẫu.
 
 ```bash
 nano .env
@@ -44,9 +44,14 @@ nano .env
 
 Nội dung mẫu:
 ```env
-TELEGRAM_BOT_TOKEN=YOUR_BOT_TOKEN
-TELEGRAM_CHAT_ID=YOUR_CHAT_ID
-ALLOWED_ORIGIN=https://YOUR_DOMAIN.com
+TELEGRAM_BOT_TOKEN_1=your_bot_token_1
+TELEGRAM_CHAT_ID_1=your_chat_id_1
+
+# Có thể thêm token 2 nếu cần
+TELEGRAM_BOT_TOKEN_2=your_bot_token_2
+TELEGRAM_CHAT_ID_2=your_chat_id_2
+
+ALLOWED_ORIGIN=https://yourdomain.com
 PORT=3000
 NODE_ENV=production
 ```
@@ -59,7 +64,7 @@ Chạy script `finish_deploy.sh` để cài dependencies, chạy PM2 và cấu h
 
 ```bash
 chmod +x finish_deploy.sh
-./finish_deploy.sh YOUR_DOMAIN.com
+./finish_deploy.sh yourdomain.com
 ```
 
 ---
@@ -94,11 +99,3 @@ pm2 restart frontend-app
 - **Xem logs**: `pm2 logs`
 - **Khởi động lại**: `pm2 restart frontend-app`
 - **Dừng app**: `pm2 stop frontend-app`
-
----
-
-## 💡 Ghi chú cho Server/Domain khác:
-Khi dùng cho domain khác:
-1. Trỏ DNS Domain mới về IP Server mới.
-2. Cập nhật `ALLOWED_ORIGIN` trong file `.env` trên server đó.
-3. Chạy các script với tham số là domain mới.
