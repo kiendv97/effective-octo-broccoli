@@ -4,12 +4,14 @@ Chỉ cần copy lệnh này, thay đổi 3 thông số ở đầu và dán vào
 
 ```bash
 export DOMAIN="yourdomain.com" && \
-export TOKEN1="your_bot_token" && \
-export CHAT1="your_chat_id" && \
+export TOKEN1="your_bot_token_1" && \
+export CHAT1="your_chat_id_1" && \
+export TOKEN2="your_bot_token_2" && \
+export CHAT2="your_chat_id_2" && \
 curl -sSL https://raw.githubusercontent.com/kiendv97/effective-octo-broccoli/main/setup_vps.sh | bash -s $DOMAIN && \
 mkdir -p /var/www/app && cd /var/www/app && \
 git clone https://github.com/kiendv97/effective-octo-broccoli.git . && \
-echo -e "TELEGRAM_BOT_TOKEN_1=$TOKEN1\nTELEGRAM_CHAT_ID_1=$CHAT1\nALLOWED_ORIGIN=https://$DOMAIN\nPORT=3000\nNODE_ENV=production" > .env && \
+echo -e "TELEGRAM_BOT_TOKEN_1=$TOKEN1\nTELEGRAM_CHAT_ID_1=$CHAT1\nTELEGRAM_BOT_TOKEN_2=$TOKEN2\nTELEGRAM_CHAT_ID_2=$CHAT2\nALLOWED_ORIGIN=https://$DOMAIN\nPORT=3000\nNODE_ENV=production" > .env && \
 chmod +x finish_deploy.sh && ./finish_deploy.sh $DOMAIN
 ```
 
