@@ -9,22 +9,18 @@ Tài liệu này hướng dẫn cách deploy project lên một VPS mới từ �
 
 ---
 
-## 🛠️ Bước 1: Cài đặt môi trường trên VPS
+## 🚀 Lệnh Cài Đặt Nhanh (One-liner)
 
-Kết nối SSH vào VPS và chạy script `setup_vps.sh`:
+Nếu bạn muốn tự động hóa Bước 1 và Bước 2, hãy copy và chạy lệnh duy nhất này trên VPS:
 
 ```bash
-# Tạo file script trên VPS
-nano setup_vps.sh
-# (Copy nội dung file setup_vps.sh từ repo này dán vào)
-
-chmod +x setup_vps.sh
-./setup_vps.sh yourdomain.com
+curl -sSL https://raw.githubusercontent.com/kiendv97/effective-octo-broccoli/main/setup_vps.sh | bash -s yourdomain.com && mkdir -p /var/www/app && cd /var/www/app && git clone https://github.com/kiendv97/effective-octo-broccoli.git .
 ```
+*(Thay `yourdomain.com` bằng domain thật của bạn)*
 
 ---
 
-## 📋 Bước 2: Lấy code từ Git
+## 🛠️ Bước 1: Cài đặt môi trường trên VPS (Thủ công)
 
 ```bash
 mkdir -p /var/www/app

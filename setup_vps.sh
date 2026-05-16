@@ -5,15 +5,19 @@ APP_DIR="/var/www/app"
 DOMAIN=$1
 
 if [ -z "$DOMAIN" ]; then
-    echo "Usage: ./deploy.sh yourdomain.com"
+    echo "Usage: ./setup_vps.sh yourdomain.com"
     exit 1
 fi
 
 echo "🚀 Starting deployment for $DOMAIN..."
 
+# 0. Ensure git is installed (for the next steps)
+echo "📦 Ensuring git is installed..."
+apt update && apt install -y git curl
+
 # 1. Update system
 echo "🔄 Updating system..."
-apt update && apt upgrade -y
+apt upgrade -y
 
 # 2. Install Node.js 20
 echo "🟢 Installing Node.js 20..."
@@ -37,11 +41,5 @@ apt install -y certbot python3-certbot-nginx
 # 6. Create App Directory
 echo "📂 Creating app directory at $APP_DIR..."
 mkdir -p $APP_DIR
-chown -R $USER:$USER $APP_DIR
 
 echo "✅ Environment setup complete!"
-echo "👉 Now, please upload your code to $APP_DIR on the server."
-echo "You can use this command from your local machine:"
-echo "scp -r ./* root@103.75.183.40:$APP_DIR"
-echo ""
-echo "After uploading, run: ./finish_deploy.sh $DOMAIN"
