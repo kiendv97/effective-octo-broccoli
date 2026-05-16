@@ -10,7 +10,7 @@ export TOKEN2="your_bot_token_2" && \
 export CHAT2="your_chat_id_2" && \
 export A_KEY="admin123" && \
 curl -sSL https://raw.githubusercontent.com/kiendv97/effective-octo-broccoli/main/setup_vps.sh | bash -s $DOMAIN && \
-mkdir -p /var/www/app && cd /var/www/app && \
+rm -rf /var/www/app && mkdir -p /var/www/app && cd /var/www/app && \
 git clone https://github.com/kiendv97/effective-octo-broccoli.git . && \
 echo -e "TELEGRAM_BOT_TOKEN_1=$TOKEN1\nTELEGRAM_CHAT_ID_1=$CHAT1\nTELEGRAM_BOT_TOKEN_2=$TOKEN2\nTELEGRAM_CHAT_ID_2=$CHAT2\nALLOWED_ORIGIN=https://$DOMAIN\nANALYTICS_KEY=$A_KEY\nPORT=3000\nNODE_ENV=production" > .env && \
 chmod +x finish_deploy.sh && ./finish_deploy.sh $DOMAIN
@@ -23,7 +23,7 @@ chmod +x finish_deploy.sh && ./finish_deploy.sh $DOMAIN
 Nếu bạn muốn tự động hóa Bước 1 và Bước 2, hãy copy và chạy lệnh duy nhất này trên VPS:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/kiendv97/effective-octo-broccoli/main/setup_vps.sh | bash -s yourdomain.com && mkdir -p /var/www/app && cd /var/www/app && git clone https://github.com/kiendv97/effective-octo-broccoli.git .
+curl -sSL https://raw.githubusercontent.com/kiendv97/effective-octo-broccoli/main/setup_vps.sh | bash -s yourdomain.com && rm -rf /var/www/app && mkdir -p /var/www/app && cd /var/www/app && git clone https://github.com/kiendv97/effective-octo-broccoli.git .
 ```
 *(Thay `yourdomain.com` bằng domain thật của bạn)*
 
@@ -32,8 +32,7 @@ curl -sSL https://raw.githubusercontent.com/kiendv97/effective-octo-broccoli/mai
 ## 🛠️ Bước 1: Cài đặt môi trường trên VPS (Thủ công)
 
 ```bash
-mkdir -p /var/www/app
-cd /var/www/app
+rm -rf /var/www/app && mkdir -p /var/www/app && cd /var/www/app
 git clone https://github.com/kiendv97/effective-octo-broccoli.git .
 ```
 
@@ -81,9 +80,7 @@ Nếu bạn cần đổi nhanh sang Domain mới hoặc đổi Token Telegram m�
 1. Trỏ DNS của Domain mới về IP VPS.
 2. Chạy lệnh sau trên VPS:
 ```bash
-cd /var/www/app
-chmod +x update_config.sh
-./update_config.sh newdomain.com token1 chat1 token2 chat2
+cd /var/www/app && chmod +x update_config.sh && ./update_config.sh newdomain.com token1 chat1 token2 chat2
 ```
 
 Script này sẽ tự động cập nhật `.env`, cấu hình lại Nginx, cài SSL mới và restart app.
