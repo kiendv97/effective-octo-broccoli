@@ -29,7 +29,7 @@ chmod +x setup_vps.sh
 ```bash
 mkdir -p /var/www/app
 cd /var/www/app
-git clone YOUR_GIT_REPO_URL .
+git clone https://github.com/kiendv97/effective-octo-broccoli.git .
 ```
 
 ---
