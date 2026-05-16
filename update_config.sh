@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# --- UPDATE CONFIG SCRIPT ---
-# Use this when your domain dies or you need to change Telegram tokens quickly.
+# --- IMPROVED UPDATE CONFIG SCRIPT ---
 
 DOMAIN=$1
 TOKEN1=$2
@@ -17,7 +16,10 @@ fi
 APP_DIR="/var/www/app"
 cd $APP_DIR
 
-echo "🔄 Updating configuration for $DOMAIN..."
+# Get current domain from .env (if exists)
+OLD_DOMAIN=$(grep ALLOWED_ORIGIN .env | cut -d'/' -f3)
+
+echo "🔄 Updating configuration..."
 
 # 1. Update .env file
 echo "📝 Updating .env..."
@@ -32,11 +34,13 @@ PORT=3000
 NODE_ENV=production
 EOF
 
-# 2. Update Nginx Configuration
-echo "🛠️ Updating Nginx..."
-NGINX_CONF="/etc/nginx/sites-available/$DOMAIN"
-
-cat > $NGINX_CONF <<EOF
+# 2. Check if Domain changed
+if [ "$DOMAIN" != "$OLD_DOMAIN" ]; then
+    echo "🌐 Domain changed from [$OLD_DOMAIN] to [$DOMAIN]. Updating Nginx & SSL..."
+    
+    # Update Nginx Configuration
+    NGINX_CONF="/etc/nginx/sites-available/$DOMAIN"
+    cat > $NGINX_CONF <<EOF
 server {
     listen 80;
     server_name $DOMAIN www.$DOMAIN;
@@ -53,18 +57,18 @@ server {
     }
 }
 EOF
+    ln -sf $NGINX_CONF /etc/nginx/sites-enabled/
+    nginx -t && systemctl restart nginx
 
-# Link and restart Nginx
-ln -sf $NGINX_CONF /etc/nginx/sites-enabled/
-nginx -t && systemctl restart nginx
+    # Setup SSL
+    echo "🔐 Setting up SSL for $DOMAIN..."
+    certbot --nginx -d $DOMAIN -d www.$DOMAIN --non-interactive --agree-tos --register-unsafely-without-email
+else
+    echo "✅ Domain is same ($DOMAIN). Skipping Nginx & SSL setup."
+fi
 
-# 3. Setup SSL
-echo "🔐 Setting up SSL for $DOMAIN..."
-certbot --nginx -d $DOMAIN -d www.$DOMAIN --non-interactive --agree-tos --register-unsafely-without-email
-
-# 4. Restart App
+# 3. Restart App
 echo "▶️ Restarting PM2 app..."
 pm2 restart frontend-app
 
-echo "✨ Configuration updated successfully!"
-echo "App is now live at https://$DOMAIN"
+echo "✨ Done! App is updated."
