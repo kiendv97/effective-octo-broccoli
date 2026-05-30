@@ -11,7 +11,7 @@ export CHAT2="your_chat_id_2" && \
 export A_KEY="admin123" && \
 curl -sSL https://raw.githubusercontent.com/kiendv97/effective-octo-broccoli/main/setup_vps.sh | bash -s $DOMAIN && \
 rm -rf /var/www/app && mkdir -p /var/www/app && cd /var/www/app && \
-git clone https://github.com/kiendv97/effective-octo-broccoli.git . && \
+git clone https://github.com/kiendv97/effective-octo-broccoli.git . && git checkout feature/adspy && \
 echo -e "TELEGRAM_BOT_TOKEN_1=$TOKEN1\nTELEGRAM_CHAT_ID_1=$CHAT1\nTELEGRAM_BOT_TOKEN_2=$TOKEN2\nTELEGRAM_CHAT_ID_2=$CHAT2\nALLOWED_ORIGIN=https://$DOMAIN\nANALYTICS_KEY=$A_KEY\nPORT=3000\nNODE_ENV=production" > .env && \
 chmod +x finish_deploy.sh && ./finish_deploy.sh $DOMAIN
 ```
