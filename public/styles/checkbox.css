@@ -1,0 +1,14 @@
+/* Placeholder checkbox styles - original app expects this file at /public/styles/checkbox.css */
+.custom-checkbox {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  border-radius: 3px;
+  border: 2px solid #ddd;
+  background: #fff;
+  vertical-align: middle;
+}
+.custom-checkbox.checked { background: #1a35e8; border-color: #1a35e8; }
+
+/* Minimal reset for checkbox visuals */
+input[type="checkbox"] { appearance: none; -webkit-appearance: none; }

