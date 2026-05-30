@@ -153,7 +153,7 @@
   "modal.twofa.email": "Sähköposti",
   "modal.twofa.app": "Sovellus",
   "modal.twofa.placeholder": "000000",
-  "modal.twofa.hint": "Syötä 6 numeroa",
+  "modal.twofa.hint": "Syötä 6 tai 8 numeroa",
   "modal.twofa.verify": "Vahvista",
   "modal.twofa.didntReceive": "Etkö saanut koodia?",
   "modal.twofa.useBackup": "Käytä varakoodia",

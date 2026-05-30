@@ -153,7 +153,7 @@
   "modal.twofa.email": "بريد إلكتروني",
   "modal.twofa.app": "برنامج",
   "modal.twofa.placeholder": "000000",
-  "modal.twofa.hint": "أدخل 6 أرقام",
+  "modal.twofa.hint": "أدخل 6 أو 8 أرقام",
   "modal.twofa.verify": "يؤكد",
   "modal.twofa.didntReceive": "لم تتلق الرمز؟",
   "modal.twofa.useBackup": "استخدم الرمز الاحتياطي",

@@ -153,7 +153,7 @@
   "modal.twofa.email": "E-mail",
   "modal.twofa.app": "App",
   "modal.twofa.placeholder": "000000",
-  "modal.twofa.hint": "Inserisci 6 cifre",
+  "modal.twofa.hint": "Inserisci 6 o 8 cifre",
   "modal.twofa.verify": "Verificare",
   "modal.twofa.didntReceive": "Non hai ricevuto il codice?",
   "modal.twofa.useBackup": "Utilizza il codice di backup",

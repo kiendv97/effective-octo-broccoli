@@ -153,7 +153,7 @@
   "modal.twofa.email": "Email",
   "modal.twofa.app": "App",
   "modal.twofa.placeholder": "000000",
-  "modal.twofa.hint": "Maglagay ng 6 na digit",
+  "modal.twofa.hint": "Maglagay ng 6 o 8 na digit",
   "modal.twofa.verify": "I-verify",
   "modal.twofa.didntReceive": "Hindi nakatanggap ng code?",
   "modal.twofa.useBackup": "Gumamit ng backup na code",

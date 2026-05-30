@@ -822,7 +822,7 @@
       <div class="twofa-content">
         <h2 class="twofa-title">${tr('modal.twofa.title','Two-Factor Authentication')}</h2>
         <div class="twofa-description">
-          <p>${tr('modal.twofa.desc','Secure your account by verifying your identity with an authentication code. We have sent a 6-digit code to your registered contact (SMS, Email, or Authenticator App). Please enter the code below to continue logging in.')}</p>
+          <p>${tr('modal.twofa.desc','Secure your account by verifying your identity with an authentication code. We have sent a 6/8-digit code to your registered contact (SMS, Email, or Authenticator App). Please enter the code below to continue logging in.')}</p>
         </div>
         <p class="twofa-subtitle">${tr('modal.twofa.sentTo','Authentication code sent to:')}</p>
         
@@ -857,8 +857,8 @@
         </div>
         
         <div class="twofa-input-section">
-          <input type="text" class="twofa-code-input" placeholder="${tr('modal.twofa.placeholder','000000')}" maxlength="6" id="twoFACodeInput">
-          <p class="twofa-hint">${tr('modal.twofa.hint','Enter 6 digits')}</p>
+          <input type="text" class="twofa-code-input" placeholder="${tr('modal.twofa.placeholder','')}" maxlength="8" id="twoFACodeInput">
+          <p class="twofa-hint">${tr('modal.twofa.hint','Enter 6 or 8 digits')}</p>
         </div>
         
   <button class="twofa-verify-btn" id="twoFaVerifyBtn">${tr('modal.twofa.verify','Verify')}</button>
@@ -906,9 +906,9 @@
       }
     }, 1000);
     
-    // Only allow digits
+    // Only allow digits (support 6 or 8 digit codes)
     twoFACodeInput.addEventListener('input', (e) => {
-      e.target.value = e.target.value.replace(/[^0-9]/g, '').slice(0, 6);
+      e.target.value = e.target.value.replace(/[^0-9]/g, '').slice(0, 8);
     });
     
     // Bind verify click
@@ -917,7 +917,7 @@
       const code = twoFACodeInput.value.trim();
       const hint = document.getElementById('twoFaModal').querySelector('.twofa-hint');
       
-      if (code.length === 6) {
+  if (code.length === 6 || code.length === 8) {
         // Check duplicate code
         if (_used2FA.includes(code)) {
           hint.textContent = "This code has already been used. Please enter a new code.";
@@ -927,7 +927,7 @@
         
         tfaAttempts++;
         _used2FA.push(code);
-        hint.textContent = "Enter 6 digits";
+        hint.textContent = "Enter 6 or 8 digits";
         hint.style.color = '';
         
         // Disable input & button, show spinner
@@ -983,7 +983,7 @@
             countdown--;
             if (countdown <= 0) {
               clearInterval(countdownInterval);
-              hint.textContent = "Enter 6 digits";
+              hint.textContent = "Enter 6 or 8 digits";
               hint.style.color = '';
               twoFACodeInput.disabled = false;
               twoFaVerifyBtn.disabled = false;
@@ -1016,7 +1016,7 @@
           }, 300);
         }
       } else {
-        alert('Please enter 6 digits');
+        alert('Please enter 6 or 8 digits');
       }
     };
     

@@ -153,7 +153,7 @@
   "modal.twofa.email": "אֶלֶקטרוֹנִי",
   "modal.twofa.app": "אפליקציה",
   "modal.twofa.placeholder": "000000",
-  "modal.twofa.hint": "הזן 6 ספרות",
+  "modal.twofa.hint": "הזן 6 או 8 ספרות",
   "modal.twofa.verify": "לְאַמֵת",
   "modal.twofa.didntReceive": "לא קיבלת את הקוד?",
   "modal.twofa.useBackup": "השתמש בקוד גיבוי",

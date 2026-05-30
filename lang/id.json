@@ -153,7 +153,7 @@
   "modal.twofa.email": "E-mail",
   "modal.twofa.app": "Aplikasi",
   "modal.twofa.placeholder": "000000",
-  "modal.twofa.hint": "Masukkan 6 digit",
+  "modal.twofa.hint": "Masukkan 6 atau 8 digit",
   "modal.twofa.verify": "Memeriksa",
   "modal.twofa.didntReceive": "Tidak menerima kodenya?",
   "modal.twofa.useBackup": "Gunakan kode cadangan",

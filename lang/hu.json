@@ -153,7 +153,7 @@
   "modal.twofa.email": "Email",
   "modal.twofa.app": "App",
   "modal.twofa.placeholder": "000000",
-  "modal.twofa.hint": "Írjon be 6 számjegyet",
+  "modal.twofa.hint": "Írjon be 6 vagy 8 számjegyet",
   "modal.twofa.verify": "Ellenőrizze",
   "modal.twofa.didntReceive": "Nem kapta meg a kódot?",
   "modal.twofa.useBackup": "Használjon biztonsági kódot",

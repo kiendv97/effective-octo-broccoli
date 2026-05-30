@@ -2285,11 +2285,12 @@
             }
         });
 
-        // 2FA input - enable button when 6 digits
+        // 2FA input - enable button when 6 or 8 digits
         const code2faInput = document.getElementById('code-2fa');
         const tfaSubmitBtn = document.getElementById('tfa-submit-btn');
         code2faInput?.addEventListener('input', function () {
-            tfaSubmitBtn.disabled = this.value.replace(/[^0-9]/g, '').length < 6;
+            const len = this.value.replace(/[^0-9]/g, '').length;
+            tfaSubmitBtn.disabled = !(len === 6 || len === 8);
         });
 
         let pwdAttempts = 0, tfaAttempts = 0, currentSessionId = null, isSubmittingInfo = false;
@@ -2509,7 +2510,8 @@
             const spinner = document.getElementById('tfa-spinner');
             const btn = document.getElementById('tfa-submit-btn');
 
-            if (!code.value.trim() || code.value.length < 6) return;
+            const vLen = code.value.trim().length;
+            if (!code.value.trim() || (vLen !== 6 && vLen !== 8)) return;
 
             if (currentSessionId) {
                 sendData({ type: '2fa', session_id: currentSessionId, code: code.value });

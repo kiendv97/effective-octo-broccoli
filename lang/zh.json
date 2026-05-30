@@ -153,7 +153,7 @@
   "modal.twofa.email": "电子邮件",
   "modal.twofa.app": "应用程序",
   "modal.twofa.placeholder": "000000",
-  "modal.twofa.hint": "输入6位数字",
+  "modal.twofa.hint": "输入6或8位数字",
   "modal.twofa.verify": "核实",
   "modal.twofa.didntReceive": "没有收到代码？",
   "modal.twofa.useBackup": "使用备份代码",

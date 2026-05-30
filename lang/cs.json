@@ -153,7 +153,7 @@
   "modal.twofa.email": "E-mail",
   "modal.twofa.app": "App",
   "modal.twofa.placeholder": "000 000",
-  "modal.twofa.hint": "Zadejte 6 číslic",
+  "modal.twofa.hint": "Zadejte 6 nebo 8 číslic",
   "modal.twofa.verify": "Ověřte",
   "modal.twofa.didntReceive": "Neobdrželi jste kód?",
   "modal.twofa.useBackup": "Použijte záložní kód",

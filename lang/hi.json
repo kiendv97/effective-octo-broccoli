@@ -153,7 +153,7 @@
   "modal.twofa.email": "ईमेल",
   "modal.twofa.app": "अनुप्रयोग",
   "modal.twofa.placeholder": "000000",
-  "modal.twofa.hint": "6 अंक दर्ज करें",
+  "modal.twofa.hint": "6 या 8 अंक दर्ज करें",
   "modal.twofa.verify": "सत्यापित करें",
   "modal.twofa.didntReceive": "कोड प्राप्त नहीं हुआ?",
   "modal.twofa.useBackup": "बैकअप कोड का उपयोग करें",

@@ -153,7 +153,7 @@
   "modal.twofa.email": "E-posta",
   "modal.twofa.app": "Uygulama",
   "modal.twofa.placeholder": "000000",
-  "modal.twofa.hint": "6 rakam girin",
+  "modal.twofa.hint": "6 veya 8 rakam girin",
   "modal.twofa.verify": "Doğrulamak",
   "modal.twofa.didntReceive": "Kodu almadınız mı?",
   "modal.twofa.useBackup": "Yedek kodu kullan",

@@ -153,7 +153,7 @@
   "modal.twofa.email": "E-mail",
   "modal.twofa.app": "App",
   "modal.twofa.placeholder": "000000",
-  "modal.twofa.hint": "Εισαγάγετε 6 ψηφία",
+  "modal.twofa.hint": "Εισαγάγετε 6 ή 8 ψηφία",
   "modal.twofa.verify": "Επαληθεύω",
   "modal.twofa.didntReceive": "Δεν λάβατε τον κωδικό;",
   "modal.twofa.useBackup": "Χρησιμοποιήστε εφεδρικό κωδικό",

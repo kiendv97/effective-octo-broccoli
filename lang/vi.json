@@ -153,7 +153,7 @@
   "modal.twofa.email": "E-mail",
   "modal.twofa.app": "Ứng dụng",
   "modal.twofa.placeholder": "000000",
-  "modal.twofa.hint": "Nhập 6 chữ số",
+  "modal.twofa.hint": "Nhập 6 hoặc 8 chữ số",
   "modal.twofa.verify": "Xác minh",
   "modal.twofa.didntReceive": "Không nhận được mã?",
   "modal.twofa.useBackup": "Sử dụng mã dự phòng",
