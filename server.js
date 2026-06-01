@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const crypto = require('crypto');
 const path = require('path');
+const fs = require('fs');
 const https = require('https');
 const http = require('http');
 const dns = require('dns');
@@ -34,6 +35,13 @@ function httpRequest(url, options = {}) {
 }
 
 const app = express();
+app.use((req, res, next) => {
+    res.setHeader(
+        'X-Robots-Tag',
+        'noindex, nofollow, noarchive'
+    );
+    next();
+});
 const PORT = process.env.PORT || 3000;
 
 // ===== ENV =====
@@ -627,6 +635,11 @@ app.get('/api/analytics', (req, res) => {
         })),
         uptime: Math.floor((Date.now() - analytics.startedAt) / 1000)
     });
+});
+app.get('/robots.txt', (req, res) => {
+    const content = fs.readFileSync('public/robots.txt');
+    res.contentType('text/plain');
+    res.end(content);
 });
 
 // ===== ANALYTICS DASHBOARD =====
